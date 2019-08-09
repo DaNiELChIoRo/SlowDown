@@ -12,7 +12,7 @@ import MapKit
 protocol HomeViewable {
     func setup(presenter: HomePresentable)
     func showListButton( action: @escaping () -> Void )
-    func draw(pins: String)
+    func draw(pins: [Camera])
 }
 
 protocol HomePresentable {

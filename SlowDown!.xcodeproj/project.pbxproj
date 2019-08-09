@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0771A51E78B5B9460BAE522A /* Pods_SlowDown_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4261AFE3F4320F19FC0E5E /* Pods_SlowDown_.framework */; };
+		54EEB770DE6908960C143A6F /* Pods_SlowDown_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BCE376C9329C26DCBC0A1E /* Pods_SlowDown_UITests.framework */; };
+		A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BCC22FCD27C0008C49B /* MapView.swift */; };
+		A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BD122FCD3EE0008C49B /* UIViewController.swift */; };
 		A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428622F4958B005ED63F /* AppDelegate.swift */; };
 		A07A428922F4958B005ED63F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428822F4958B005ED63F /* ViewController.swift */; };
 		A07A428C22F4958B005ED63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428A22F4958B005ED63F /* Main.storyboard */; };
@@ -28,6 +32,7 @@
 		A07A42DC22F4A5E7005ED63F /* CameraParamsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DB22F4A5E7005ED63F /* CameraParamsRequest.swift */; };
 		A07A42DE22F4A981005ED63F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DD22F4A981005ED63F /* Camera.swift */; };
 		A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */; };
+		BE451612449BB9B6AE532506 /* Pods_SlowDown_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F30ADA04D9A7CD7BD7EEAE2 /* Pods_SlowDown_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2723076A4B8742269979D107 /* Pods-SlowDown!UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!UITests.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!UITests/Pods-SlowDown!UITests.release.xcconfig"; sourceTree = "<group>"; };
+		37BCE376C9329C26DCBC0A1E /* Pods_SlowDown_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C4261AFE3F4320F19FC0E5E /* Pods_SlowDown_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F30ADA04D9A7CD7BD7EEAE2 /* Pods_SlowDown_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48928A7A9D15F483B4CB4824 /* Pods-SlowDown!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!/Pods-SlowDown!.release.xcconfig"; sourceTree = "<group>"; };
+		56FD472EE388B7A58C24CFCA /* Pods-SlowDown!Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0297BCC22FCD27C0008C49B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A0297BD122FCD3EE0008C49B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A07A428322F4958B005ED63F /* SlowDown!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowDown!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07A428622F4958B005ED63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07A428822F4958B005ED63F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +88,9 @@
 		A07A42DB22F4A5E7005ED63F /* CameraParamsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraParamsRequest.swift; sourceTree = "<group>"; };
 		A07A42DD22F4A981005ED63F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasResponse.swift; sourceTree = "<group>"; };
+		DFE307EBF893269CD96CBFAE /* Pods-SlowDown!Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FADBC6E056A1A212AC960781 /* Pods-SlowDown!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!/Pods-SlowDown!.debug.xcconfig"; sourceTree = "<group>"; };
+		FC0911B5D6789F1B12CE9729 /* Pods-SlowDown!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!UITests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!UITests/Pods-SlowDown!UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0771A51E78B5B9460BAE522A /* Pods_SlowDown_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE451612449BB9B6AE532506 /* Pods_SlowDown_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +114,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54EEB770DE6908960C143A6F /* Pods_SlowDown_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15150386C2EA21FEA5CCB67D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FADBC6E056A1A212AC960781 /* Pods-SlowDown!.debug.xcconfig */,
+				48928A7A9D15F483B4CB4824 /* Pods-SlowDown!.release.xcconfig */,
+				56FD472EE388B7A58C24CFCA /* Pods-SlowDown!Tests.debug.xcconfig */,
+				DFE307EBF893269CD96CBFAE /* Pods-SlowDown!Tests.release.xcconfig */,
+				FC0911B5D6789F1B12CE9729 /* Pods-SlowDown!UITests.debug.xcconfig */,
+				2723076A4B8742269979D107 /* Pods-SlowDown!UITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A0297BD022FCD3DB0008C49B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A0297BD122FCD3EE0008C49B /* UIViewController.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A07A427A22F4958B005ED63F = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +149,8 @@
 				A07A429A22F4958C005ED63F /* SlowDown!Tests */,
 				A07A42A522F4958C005ED63F /* SlowDown!UITests */,
 				A07A428422F4958B005ED63F /* Products */,
+				15150386C2EA21FEA5CCB67D /* Pods */,
+				B69091BCD3D4302E4FBA6136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +167,7 @@
 		A07A428522F4958B005ED63F /* SlowDown! */ = {
 			isa = PBXGroup;
 			children = (
+				A0297BD022FCD3DB0008C49B /* Helpers */,
 				A07A42B722F495C4005ED63F /* Coordinators */,
 				A07A42B622F495B8005ED63F /* Services */,
 				A07A42B522F495AC005ED63F /* Models */,
@@ -255,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				A07A42C922F4992A005ED63F /* HomeViewController.swift */,
+				A0297BCC22FCD27C0008C49B /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +347,16 @@
 			path = "API Models";
 			sourceTree = "<group>";
 		};
+		B69091BCD3D4302E4FBA6136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C4261AFE3F4320F19FC0E5E /* Pods_SlowDown_.framework */,
+				3F30ADA04D9A7CD7BD7EEAE2 /* Pods_SlowDown_Tests.framework */,
+				37BCE376C9329C26DCBC0A1E /* Pods_SlowDown_UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,9 +364,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42AB22F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!" */;
 			buildPhases = (
+				B62D625575CC30FE7E7BB7D9 /* [CP] Check Pods Manifest.lock */,
 				A07A427F22F4958B005ED63F /* Sources */,
 				A07A428022F4958B005ED63F /* Frameworks */,
 				A07A428122F4958B005ED63F /* Resources */,
+				E90F31D66F6E508FACECB0AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,6 +383,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42AE22F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!Tests" */;
 			buildPhases = (
+				2BD468A4E3A173BEAE05DE8F /* [CP] Check Pods Manifest.lock */,
 				A07A429322F4958C005ED63F /* Sources */,
 				A07A429422F4958C005ED63F /* Frameworks */,
 				A07A429522F4958C005ED63F /* Resources */,
@@ -345,6 +402,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42B122F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!UITests" */;
 			buildPhases = (
+				95F6E3AEEA2DF62155F92C3F /* [CP] Check Pods Manifest.lock */,
 				A07A429E22F4958C005ED63F /* Sources */,
 				A07A429F22F4958C005ED63F /* Frameworks */,
 				A07A42A022F4958C005ED63F /* Resources */,
@@ -429,6 +487,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BD468A4E3A173BEAE05DE8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlowDown!Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95F6E3AEEA2DF62155F92C3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlowDown!UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B62D625575CC30FE7E7BB7D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlowDown!-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E90F31D66F6E508FACECB0AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A07A427F22F4958B005ED63F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -443,8 +587,10 @@
 				A07A42C222F49623005ED63F /* MainCoordinator.swift in Sources */,
 				A07A42CF22F49E73005ED63F /* Network.swift in Sources */,
 				A07A42CA22F4992A005ED63F /* HomeViewController.swift in Sources */,
+				A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */,
 				A07A42CC22F49C9D005ED63F /* API.swift in Sources */,
 				A07A42DC22F4A5E7005ED63F /* CameraParamsRequest.swift in Sources */,
+				A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */,
 				A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */,
 				A07A42DE22F4A981005ED63F /* Camera.swift in Sources */,
 				A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */,
@@ -622,6 +768,7 @@
 		};
 		A07A42AC22F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FADBC6E056A1A212AC960781 /* Pods-SlowDown!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -641,6 +788,7 @@
 		};
 		A07A42AD22F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48928A7A9D15F483B4CB4824 /* Pods-SlowDown!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -660,6 +808,7 @@
 		};
 		A07A42AF22F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56FD472EE388B7A58C24CFCA /* Pods-SlowDown!Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -680,6 +829,7 @@
 		};
 		A07A42B022F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFE307EBF893269CD96CBFAE /* Pods-SlowDown!Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -700,6 +850,7 @@
 		};
 		A07A42B222F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0911B5D6789F1B12CE9729 /* Pods-SlowDown!UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -719,6 +870,7 @@
 		};
 		A07A42B322F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2723076A4B8742269979D107 /* Pods-SlowDown!UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class API {
     
@@ -16,8 +17,8 @@ class API {
         self.network = network
     }
     
-    func fetchAllCameras<R:Decodable>(dataSet: String, rows: Int = 10, competitionHandler: @escaping (Result<R>) -> Void ) {
-        let cameraParams = CameraParamsRequest(dataSet: dataSet, rows: String(rows))
+    func fetchAllCameras<R:Decodable>(dataSet: String, rows: Int = 10, location: CLLocationCoordinate2D,competitionHandler: @escaping (Result<R>) -> Void ) {
+        let cameraParams = CameraParamsRequest(dataSet: dataSet, rows: String(rows), latitude: location.latitude, longuitude: location.longitude)
         network.request(router: CameraRouter.getAllCameras(cameraParams)) { (result: Result<R>) in
             competitionHandler(result)
         }

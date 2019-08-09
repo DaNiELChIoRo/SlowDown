@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Se hará uso de la ubicación del usuario para fines descriptivos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Es necesario el uso de la ubicación del usuario mientras se hace uso de la aplicación</string>
 	<key>base_url</key>
 	<string>${base_url}</string>
 	<key>CFBundleDevelopmentRegion</key>

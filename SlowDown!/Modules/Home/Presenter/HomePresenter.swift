@@ -7,20 +7,30 @@
 //
 
 import UIKit
+import CoreLocation
 
-class HomePresenter {
+class HomePresenter: NSObject {
     
-    private var api: API
+    private var api: API!
     private var view: HomeViewable?
+    private var locationManager: CLLocationManager!
+    private var coordinates: CLLocationCoordinate2D?
     
     init(api: API) {
+        super.init()
         self.api = api
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            self.coordinates = locationManager.location!.coordinate
+        }
     }
     
-    
-    
     func dommyRequest() {
-        api.fetchAllCameras(dataSet: "fotocivicas") { (result: Result<[CameraResponse]>) in
+        guard let coordinates = coordinates else { return }
+        api.fetchAllCameras(dataSet: "fotocivicas", location: coordinates) { (result: Result<[CameraResponse]>) in
             switch result {
             case .success(let data):
                 print(data)
@@ -28,9 +38,9 @@ class HomePresenter {
                 for dat in data {
                     let datos = dat.fields
                     let camera = Camera(no: Int(datos.no), recordId: dat.recordid , latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet)
-                    print("camera", camera)
                     cameras.append(camera)
                 }
+                self.view?.draw(pins: cameras)
             case .failure(let error):
                 print(error)
             }
@@ -61,5 +71,22 @@ extension HomePresenter: HomePresentable {
         //        self.view?.showListButton {
         //
         //        }       
+    }
+}
+
+extension HomePresenter: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+        } 
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first?.coordinate else { return }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error al intentar obtener la ubicación del usuario!, error message: \(error.localizedDescription)")
     }
 }

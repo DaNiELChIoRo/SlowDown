@@ -19,13 +19,18 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let homeViewController = HomeViewController()
+        homeViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(barButtonHandler))
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let api = API(network: Network(config: config, session: session))
         let presenter = HomePresenter(api: api)
         presenter.attach(view: homeViewController as HomeViewable)
         navigationController.pushViewController(homeViewController, animated: true)
-        navigationController.navigationBar.prefersLargeTitles = true        
+        navigationController.navigationBar.prefersLargeTitles = true
+    }
+    
+    @objc func barButtonHandler() {
+        print("bar button handler")
     }
     
     

@@ -53,9 +53,7 @@ public class Network {
                     }
                     
                     let responseString2 = String(data: data, encoding: .utf8)
-                    print("Result:\n \(String(describing: responseString2!))")
-                    print();print()
-                    
+//                    print("Result:\n \(String(describing: responseString2!))")                    
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String: Any]
                         let records = json["records"]
