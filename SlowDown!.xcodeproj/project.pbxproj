@@ -11,6 +11,8 @@
 		54EEB770DE6908960C143A6F /* Pods_SlowDown_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BCE376C9329C26DCBC0A1E /* Pods_SlowDown_UITests.framework */; };
 		A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BCC22FCD27C0008C49B /* MapView.swift */; };
 		A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BD122FCD3EE0008C49B /* UIViewController.swift */; };
+		A0696CA522FE1AB6002D1A7F /* UserNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */; };
+		A0696CA822FE1CB4002D1A7F /* NotificationCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */; };
 		A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428622F4958B005ED63F /* AppDelegate.swift */; };
 		A07A428922F4958B005ED63F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428822F4958B005ED63F /* ViewController.swift */; };
 		A07A428C22F4958B005ED63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428A22F4958B005ED63F /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		56FD472EE388B7A58C24CFCA /* Pods-SlowDown!Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0297BCC22FCD27C0008C49B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A0297BD122FCD3EE0008C49B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationService.swift; sourceTree = "<group>"; };
+		A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCategories.swift; sourceTree = "<group>"; };
 		A07A428322F4958B005ED63F /* SlowDown!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowDown!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07A428622F4958B005ED63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07A428822F4958B005ED63F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,15 @@
 				A0297BD122FCD3EE0008C49B /* UIViewController.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A0696CA622FE1C9F002D1A7F /* UserNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */,
+				A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */,
+			);
+			path = UserNotificationService;
 			sourceTree = "<group>";
 		};
 		A07A427A22F4958B005ED63F = {
@@ -222,6 +235,7 @@
 		A07A42B622F495B8005ED63F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A0696CA622FE1C9F002D1A7F /* UserNotificationService */,
 				A07A42D422F49F85005ED63F /* Routers */,
 				A07A42CB22F49C9D005ED63F /* API.swift */,
 				A07A42CD22F49E3F005ED63F /* Http */,
@@ -594,8 +608,10 @@
 				A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */,
 				A07A42DE22F4A981005ED63F /* Camera.swift in Sources */,
 				A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */,
+				A0696CA822FE1CB4002D1A7F /* NotificationCategories.swift in Sources */,
 				A07A42D822F4A13F005ED63F /* CameraRouter.swift in Sources */,
 				A07A42D122F49F01005ED63F /* NetworkError.swift in Sources */,
+				A0696CA522FE1AB6002D1A7F /* UserNotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

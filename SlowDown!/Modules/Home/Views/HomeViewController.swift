@@ -48,18 +48,16 @@ class HomeViewController: UIViewController, HomeViewable {
     
     func draw(pins: [Camera]) {
         var annotations:[MKPointAnnotation] = []
-        var counter:Double = 5
         pins.forEach { (pin) in
             guard let lat = Double(pin.longitude!),
                 let long = Double(pin.latitude!),
                 let title = pin.mainStreet else { return }
-            let annotation: MKPointAnnotation = MKPointAnnotation()            
+            let annotation: MKPointAnnotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2DMake(lat, long)
             annotation.title = title
             annotations.append(annotation)
-            counter += 100
-        }
-        self.mapView?.addAnnotations(annotations)
+        }        
+        self.mapView?.setCameraLocations(annotations)
     }
 
 }
