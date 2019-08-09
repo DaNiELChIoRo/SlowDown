@@ -48,7 +48,8 @@ class MapView: MKMapView  {
         self.locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestLocation()
-        locationManager?.requestWhenInUseAuthorization()
+//        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager?.startUpdatingLocation()
@@ -61,11 +62,11 @@ class MapView: MKMapView  {
         for location in locations {
             let region = CLCircularRegion(center: location.coordinate, radius: 100, identifier: "fotocivica@\(location.title!)")
             region.notifyOnEntry = true
-            region.notifyOnExit = false
+            region.notifyOnExit = true
+//            locationManager?.startMonitoring(for: region)
             let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
             UserNotificationService.shared.defaultNotificationRequest(id: location.title!, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .default, trigger: trigger)
-        }
-        print(locationManager?.monitoredRegions)
+        }        
     }
 }
 
