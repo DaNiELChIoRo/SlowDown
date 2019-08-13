@@ -18,7 +18,6 @@ class HomeViewController: UIViewController, HomeViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
     }
     
     //TODO - visual config
@@ -26,6 +25,7 @@ class HomeViewController: UIViewController, HomeViewable {
 
         title = "SlowDown!"
         self.presenter = presenter
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(barButtonHandler))
         view.backgroundColor =  .white
         
         let text = UILabel()
@@ -41,24 +41,30 @@ class HomeViewController: UIViewController, HomeViewable {
         
         self.presenter.fetchCameras()
     }
+
+    @objc func barButtonHandler() {
+        presenter.showAll()
+    }
     
-    func showListButton(action: @escaping () -> Void) {
+    @objc func showListButton(action: @escaping () -> Void) {
         
     }
     
     func draw(pins: [Camera]) {
-        let camera = pins[0]
-        camer
         var annotations:[MKPointAnnotation] = []
         pins.forEach { (pin) in
-            guard let lat = Double(pin.longitude!),
+            guard let type = pin.geoShape,
+                let lat = Double(pin.longitude!),
                 let long = Double(pin.latitude!),
                 let title = pin.mainStreet else { return }
+            if type.type == "LineString" {
+               print("LineString")
+            }
             let annotation: MKPointAnnotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(lat, long)
-            annotation.title = title
-            annotations.append(annotation)
-        }        
+                annotation.coordinate = CLLocationCoordinate2DMake(lat, long)
+                annotation.title = title
+                annotations.append(annotation)
+        }
         self.mapView?.setCameraLocations(annotations)
     }
 
@@ -86,20 +92,25 @@ extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
         let identifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onPinTapHandler))
-            annotationView?.addGestureRecognizer(tapGesture)
-            annotationView!.canShowCallout = true
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            pinView!.canShowCallout = true
+            let pinButton = UIButton(frame: CGRect(x: 0, y: 0, width: 47, height: 47))
+            pinButton.addTarget(self, action: #selector(onPinTapHandler), for: .touchDown)
+            pinButton.setImage(UIImage(named: "info"), for: .normal)
+            pinButton.backgroundColor = .lightGray
+            pinView!.leftCalloutAccessoryView = pinButton
+            
         } else {
-            annotationView!.annotation = annotation
+            pinView!.annotation = annotation
         }
-        return annotationView
+        return pinView
     }
     
     @objc func onPinTapHandler() {
         print("on tap pin gesture handler")
+        presenter?.showDetailView()
     }
     
 }

@@ -16,6 +16,9 @@ protocol HomeViewable {
 }
 
 protocol HomePresentable {
+    var view: HomeViewable? { get set }
+    var coordinator: MainCoordinator? { get set }
     func fetchCameras()        
     func showAll()
+    func showDetailView()
 }

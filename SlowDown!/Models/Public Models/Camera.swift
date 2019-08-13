@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Camera {
+struct Camera{
     
     var no: Int?
     var recordId: String?
@@ -9,9 +9,9 @@ struct Camera {
     var longitude: String?
     var mainStreet: String?
     var secondStreet: String?
-
+    internal var geoShape: GeoShape?
     
-    init(no: Int?, recordId: String?, latitude: String?, longitude: String?, mainStreet: String?, secondStreet: String?) {
+    init(no: Int?, recordId: String?, latitude: String?, longitude: String?, mainStreet: String?, secondStreet: String?, geoShape: GeoShape?) {       
         guard let no = no,
             let recordId = recordId,
             let latitude = latitude,
@@ -25,7 +25,7 @@ struct Camera {
         self.longitude = longitude
         self.mainStreet = mainStreet
         self.secondStreet = secondStreet
-        
+        self.geoShape = geoShape
     }
     
 }

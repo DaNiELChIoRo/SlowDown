@@ -13,6 +13,14 @@
 		A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BD122FCD3EE0008C49B /* UIViewController.swift */; };
 		A0696CA522FE1AB6002D1A7F /* UserNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */; };
 		A0696CA822FE1CB4002D1A7F /* NotificationCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */; };
+		A06C639023031C3A00ECDFDF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C638F23031C3A00ECDFDF /* DetailViewController.swift */; };
+		A06C6392230326DC00ECDFDF /* DetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C6391230326DB00ECDFDF /* DetailProtocols.swift */; };
+		A06C6394230327E400ECDFDF /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C6393230327E400ECDFDF /* DetailPresenter.swift */; };
+		A06C639623032DC000ECDFDF /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C639523032DC000ECDFDF /* UILabel.swift */; };
+		A06C6398230338CA00ECDFDF /* ListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C6397230338CA00ECDFDF /* ListProtocols.swift */; };
+		A06C639A2303396300ECDFDF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C63992303396300ECDFDF /* ListViewController.swift */; };
+		A06C639C23033E1C00ECDFDF /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C639B23033E1C00ECDFDF /* ListPresenter.swift */; };
+		A06C63A423035A3700ECDFDF /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C63A323035A3700ECDFDF /* ListTableViewController.swift */; };
 		A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428622F4958B005ED63F /* AppDelegate.swift */; };
 		A07A428922F4958B005ED63F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428822F4958B005ED63F /* ViewController.swift */; };
 		A07A428C22F4958B005ED63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428A22F4958B005ED63F /* Main.storyboard */; };
@@ -65,6 +73,14 @@
 		A0297BD122FCD3EE0008C49B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationService.swift; sourceTree = "<group>"; };
 		A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCategories.swift; sourceTree = "<group>"; };
+		A06C638F23031C3A00ECDFDF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A06C6391230326DB00ECDFDF /* DetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProtocols.swift; sourceTree = "<group>"; };
+		A06C6393230327E400ECDFDF /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		A06C639523032DC000ECDFDF /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		A06C6397230338CA00ECDFDF /* ListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProtocols.swift; sourceTree = "<group>"; };
+		A06C63992303396300ECDFDF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		A06C639B23033E1C00ECDFDF /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		A06C63A323035A3700ECDFDF /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		A07A428322F4958B005ED63F /* SlowDown!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SlowDown!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07A428622F4958B005ED63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07A428822F4958B005ED63F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A0297BD122FCD3EE0008C49B /* UIViewController.swift */,
+				A06C639523032DC000ECDFDF /* UILabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 			children = (
 				A07A42BE22F49606005ED63F /* Presenter */,
 				A07A42BD22F495FF005ED63F /* Views */,
+				A06C6397230338CA00ECDFDF /* ListProtocols.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -274,6 +292,7 @@
 		A07A42BA22F495E3005ED63F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A06C6391230326DB00ECDFDF /* DetailProtocols.swift */,
 				A07A42BC22F495F7005ED63F /* Presenter */,
 				A07A42BB22F495F1005ED63F /* Views */,
 			);
@@ -283,6 +302,7 @@
 		A07A42BB22F495F1005ED63F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A06C638F23031C3A00ECDFDF /* DetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +310,7 @@
 		A07A42BC22F495F7005ED63F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				A06C6393230327E400ECDFDF /* DetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -297,6 +318,8 @@
 		A07A42BD22F495FF005ED63F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A06C63A323035A3700ECDFDF /* ListTableViewController.swift */,
+				A06C63992303396300ECDFDF /* ListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,6 +327,7 @@
 		A07A42BE22F49606005ED63F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				A06C639B23033E1C00ECDFDF /* ListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -595,22 +619,30 @@
 				A07A42C422F4962D005ED63F /* Coordinator.swift in Sources */,
 				A07A42C622F49712005ED63F /* HomeProtocols.swift in Sources */,
 				A07A42D322F49F51005ED63F /* NetworkResult.swift in Sources */,
+				A06C6398230338CA00ECDFDF /* ListProtocols.swift in Sources */,
 				A07A428922F4958B005ED63F /* ViewController.swift in Sources */,
 				A07A42D622F49F91005ED63F /* Router.swift in Sources */,
 				A07A42C822F497E8005ED63F /* HomePresenter.swift in Sources */,
+				A06C639023031C3A00ECDFDF /* DetailViewController.swift in Sources */,
 				A07A42C222F49623005ED63F /* MainCoordinator.swift in Sources */,
 				A07A42CF22F49E73005ED63F /* Network.swift in Sources */,
+				A06C639C23033E1C00ECDFDF /* ListPresenter.swift in Sources */,
+				A06C63A423035A3700ECDFDF /* ListTableViewController.swift in Sources */,
 				A07A42CA22F4992A005ED63F /* HomeViewController.swift in Sources */,
 				A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */,
 				A07A42CC22F49C9D005ED63F /* API.swift in Sources */,
+				A06C6392230326DC00ECDFDF /* DetailProtocols.swift in Sources */,
 				A07A42DC22F4A5E7005ED63F /* CameraParamsRequest.swift in Sources */,
 				A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */,
 				A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */,
+				A06C6394230327E400ECDFDF /* DetailPresenter.swift in Sources */,
 				A07A42DE22F4A981005ED63F /* Camera.swift in Sources */,
 				A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */,
 				A0696CA822FE1CB4002D1A7F /* NotificationCategories.swift in Sources */,
 				A07A42D822F4A13F005ED63F /* CameraRouter.swift in Sources */,
 				A07A42D122F49F01005ED63F /* NetworkError.swift in Sources */,
+				A06C639623032DC000ECDFDF /* UILabel.swift in Sources */,
+				A06C639A2303396300ECDFDF /* ListViewController.swift in Sources */,
 				A0696CA522FE1AB6002D1A7F /* UserNotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -788,13 +820,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RPUTZQX636;
+				DEVELOPMENT_TEAM = PZGF8G36GD;
 				INFOPLIST_FILE = "SlowDown!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.DaNiELChIoro.SlowDown-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaNiELChIoro.SlowDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -808,13 +840,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RPUTZQX636;
+				DEVELOPMENT_TEAM = PZGF8G36GD;
 				INFOPLIST_FILE = "SlowDown!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.DaNiELChIoro.SlowDown-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaNiELChIoro.SlowDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
