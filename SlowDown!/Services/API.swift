@@ -17,8 +17,8 @@ class API {
         self.network = network
     }
     
-    func fetchAllCameras<R:Decodable>(dataSet: String, rows: Int = 10, location: CLLocationCoordinate2D,competitionHandler: @escaping (Result<R>) -> Void ) {
-        let cameraParams = CameraParamsRequest(dataSet: dataSet, rows: String(rows), latitude: location.latitude, longuitude: location.longitude)
+    func fetchAllCameras<R:Decodable>(dataSet: String, rows: Int = 140, location: WGS84, competitionHandler: @escaping (Result<R>) -> Void ) {
+        let cameraParams = CameraParamsRequest(dataSet: dataSet, rows: String(rows), geofilter: "\(location.latitude)%2C\(location.longuitude)%2C\(location.distance)")
         network.request(router: CameraRouter.getAllCameras(cameraParams)) { (result: Result<R>) in
             competitionHandler(result)
         }

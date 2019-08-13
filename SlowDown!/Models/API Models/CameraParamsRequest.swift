@@ -11,14 +11,12 @@ import Foundation
 struct CameraParamsRequest: Codable {
     var dataSet: String
     var rows: String
-    var latitude: Double
-    var longuitude: Double
+    var geofilter: String
     
     enum CodingKeys: String, CodingKey {
         case dataSet = "dataset"
         case rows
-        case latitude
-        case longuitude
+        case geofilter = "geofilter.distance"
     }
     
     func encode(to enconder: Encoder) throws {

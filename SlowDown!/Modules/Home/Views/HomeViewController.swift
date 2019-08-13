@@ -47,6 +47,8 @@ class HomeViewController: UIViewController, HomeViewable {
     }
     
     func draw(pins: [Camera]) {
+        let camera = pins[0]
+        camer
         var annotations:[MKPointAnnotation] = []
         pins.forEach { (pin) in
             guard let lat = Double(pin.longitude!),
@@ -84,9 +86,7 @@ extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
         let identifier = "Annotation"
-        print("annotation to be append!")
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onPinTapHandler))
@@ -95,7 +95,6 @@ extension HomeViewController: MKMapViewDelegate {
         } else {
             annotationView!.annotation = annotation
         }
-
         return annotationView
     }
     

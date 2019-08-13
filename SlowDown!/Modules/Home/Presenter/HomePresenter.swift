@@ -9,12 +9,24 @@
 import UIKit
 import CoreLocation
 
+class WGS84 {
+    var latitude: Double
+    var longuitude: Double
+    var distance: Double
+    
+    init(latitude: Double, longuitude: Double, distance: Double) {
+        self.latitude = latitude
+        self.longuitude = longuitude
+        self.distance = distance
+    }
+}
+
 class HomePresenter: NSObject {
     
     private var api: API!
     private var view: HomeViewable?
     private var locationManager: CLLocationManager!
-    private var coordinates: CLLocationCoordinate2D?
+    private var coordinates: WGS84?
     
     init(api: API) {
         super.init()
@@ -24,21 +36,23 @@ class HomePresenter: NSObject {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         if CLLocationManager.locationServicesEnabled() {
-            self.coordinates = locationManager.location!.coordinate
+            self.coordinates = WGS84(latitude: locationManager.location!.coordinate.latitude, longuitude: locationManager.location!.coordinate.longitude, distance: 1000)
         }
     }
     
     func dommyRequest() {
-        guard let coordinates = coordinates else { return }
-        api.fetchAllCameras(dataSet: "fotocivicas", location: coordinates) { (result: Result<[CameraResponse]>) in
+        let customCoordinates = WGS84(latitude: 19.3604491, longuitude: -99.162556, distance: 1000)
+//        guard let coordinates = coordinates else { return }
+        api.fetchAllCameras(dataSet: "fotocivicas", location: customCoordinates) { (result: Result<[CameraResponse]>) in
             switch result {
             case .success(let data):
-                print(data)
                 var cameras = [Camera]()
                 for dat in data {
                     let datos = dat.fields
+                    datos.geoShape.type
                     let camera = Camera(no: Int(datos.no), recordId: dat.recordid , latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet)
                     cameras.append(camera)
+                    print(camera.mainStreet, camera.latitude, camera.longitude)
                 }
                 self.view?.draw(pins: cameras)
             case .failure(let error):
