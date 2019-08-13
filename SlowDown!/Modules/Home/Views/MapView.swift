@@ -85,7 +85,7 @@ extension MapView: CLLocationManagerDelegate {
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-        setRegion(region, animated: true)
+//        setRegion(region, animated: true)´
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
