@@ -20,4 +20,5 @@ protocol ListViewable {
     var presenter: ListPresentable? { set get }
     func setup(presenter: ListPresentable)
     func setupLayout(searchController: UISearchController)
+    func reloadList()
 }

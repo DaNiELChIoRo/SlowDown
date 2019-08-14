@@ -22,6 +22,7 @@ class ListPresenter: NSObject, ListPresentable {
     init(coordinator: MainCoordinator, cameras: [Camera]) {
         self.coordinator = coordinator
         self.cameras = cameras
+        self.filteredCameras = cameras
 //        notificationCenter.addObserver(self, selector: #selector(didRecieveCameras), name: ListPresenter.listCamerasAllNotification, object: nil)
     }
     
@@ -60,24 +61,33 @@ extension ListPresenter: UISearchResultsUpdating {
         }
     }
     
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text! == ""
+    }
+    
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredCameras = cameras.filter({ (camera) -> Bool in
             guard let cameraStreeet = camera.mainStreet else { return false }
             return cameraStreeet.lowercased().contains(searchText.lowercased())
         })
+        view?.reloadList()
     }
 }
 
 extension ListPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cameras.count
+        return isFiltering() ? filteredCameras.count : cameras.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = cameras[indexPath.row].mainStreet
+        cell.textLabel?.text = isFiltering() ? filteredCameras[indexPath.row].mainStreet : cameras[indexPath.row].mainStreet
         return cell
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
     }
 }
 

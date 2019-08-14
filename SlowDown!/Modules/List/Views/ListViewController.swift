@@ -25,6 +25,10 @@ class ListViewController: UITableViewController, ListViewable {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         presenter.setupLayout()
     }
+    
+    func reloadList() {
+        tableView.reloadData()
+    }
 
 }
 
@@ -32,7 +36,7 @@ extension ListViewController {
     func setupLayout(searchController: UISearchController) {
         view.backgroundColor = .white
         title = "Fotocivicas"
-//        navigationItem.largeTitleDisplayMode = .never        
+//        navigationItem.largeTitleDisplayMode = .never
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Buscar por calle"
         navigationItem.searchController = searchController
