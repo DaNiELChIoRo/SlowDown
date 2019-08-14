@@ -49,12 +49,11 @@ class MapView: MKMapView  {
         var region:MKCoordinateRegion
         if let location = location {
             region = MKCoordinateRegion(center: location, span: span)
-            setCameraLocation(withLocation: location)
-            showsUserLocation = false
+            setCameraLocation(withLocation: location)            
         } else {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
-            showsUserLocation = true
         }
+        showsUserLocation = true
         showsCompass = true
         setRegion(region, animated: true)
         showsScale = true

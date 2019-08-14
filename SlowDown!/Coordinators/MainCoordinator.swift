@@ -37,8 +37,8 @@ class MainCoordinator: Coordinator {
     }
     
     func showListView(cameras: [Camera]) {
-        let listView = ListViewController(cameras: cameras)
-        let presenter = ListPresenter(coordinator: self)
+        let listView = ListViewController()
+        let presenter = ListPresenter(coordinator: self, cameras: cameras)
         presenter.attach(view: listView as ListViewable)
         navigationController.pushViewController(listView, animated: true)
     }
