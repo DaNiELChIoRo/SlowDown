@@ -33,6 +33,7 @@ class ListPresenter: NSObject, ListPresentable {
     
     func setupLayout() {
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         self.view?.setupLayout(searchController: searchController)
     }
     
@@ -48,11 +49,29 @@ class ListPresenter: NSObject, ListPresentable {
             print(cameras)
         }
     }
+    
+    func resetFilteredCameras() {
+        filteredCameras = cameras
+        view?.reloadList()
+    }
+}
+
+extension ListPresenter: UISearchBarDelegate {
+    //This is in order to catch when clear button is tapped!
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            resetFilteredCameras()
+        }
+    }
+    
+    //This is fired when cancel button is tapped!
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resetFilteredCameras()
+    }
 }
 
 extension ListPresenter: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
         if let searchText = searchController.searchBar.text {
             print(searchText)
             if searchText != "" {
@@ -60,7 +79,7 @@ extension ListPresenter: UISearchResultsUpdating {
             }
         }
     }
-    
+
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text! == ""
     }
