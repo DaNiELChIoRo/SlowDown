@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = [Coordinator]()
@@ -28,8 +29,8 @@ class MainCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
     }        
     
-    func showDetailsView() {
-        let detailsView = DetailViewController()
+    func showDetailsView(withLocation location:CLLocationCoordinate2D, withCamera camera: Camera) {
+        let detailsView = DetailViewController(withLocation: location, andCamera: camera)
         let presenter = DetailPresenter(coordinator: self)
         presenter.attach(view: detailsView as DetailViewable)
         navigationController.pushViewController(detailsView, animated: true)

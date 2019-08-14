@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlowDown!/Modules/Home/Views/MapView.swift"
-            timestampString = "587424552.1280071"
+            timestampString = "587436262.579487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "locationManager(_:didEnterRegion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SlowDown!/Modules/Home/Views/MapView.swift"
-            timestampString = "587424552.128521"
+            timestampString = "587436262.579874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "locationManager(_:didEnterRegion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlowDown!/Modules/Home/Views/HomeViewController.swift"
+            timestampString = "587436262.5799381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "onPinTapHandler(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlowDown!/Modules/Home/Views/HomeViewController.swift"
+            timestampString = "587436262.580726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "onPinTapHandler(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SlowDown!/Modules/Home/Views/HomeViewController.swift"
+            timestampString = "587436262.581157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "onPinTapHandler(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

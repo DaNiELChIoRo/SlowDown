@@ -12,8 +12,7 @@ import SnapKit
 class ListViewController: UITableViewController, ListViewable {
     
     internal var presenter: ListPresentable?
-    private var cameras = [Camera]()
-    private var listTable: ListTableViewController?
+    private var cameras = [Camera]()    
     
     override func viewDidLoad() {
         super.viewDidLoad()

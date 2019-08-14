@@ -8,16 +8,27 @@
 
 import UIKit
 import SnapKit
+import MapKit
 
 class DetailViewController: UIViewController, DetailViewable {
 
     internal var presenter: DetailPresentable?
+    var mapView: MapView?
     var mainStreetLabel: UILabel?
     var secondaryStreetLabel: UILabel?
     var directionLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    init(withLocation location: CLLocationCoordinate2D, andCamera camera: Camera) {
+        super.init(nibName: nil, bundle: nil)
+        mapView = MapView(withLocation: location)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setup(presenter: DetailPresentable) {
@@ -28,10 +39,10 @@ class DetailViewController: UIViewController, DetailViewable {
     func setupView() {
         view.backgroundColor = .white
         title = "Fotocivica Detalle"
+        mapView = MapView()
         mainStreetLabel = defaulLabel(text: "calle Principal: ", textAlignment: .left, fontSize: 18)
-        
         directionLabel = defaulLabel(text: "sentido: ", textAlignment: .center, fontSize: 18)
-        setupLayout(withViews: [mainStreetLabel!, directionLabel!])
+        setupLayout(withViews: [mapView!, mainStreetLabel!, directionLabel!])
     }
     
 }
@@ -41,8 +52,8 @@ let _width = UIScreen.main.bounds.width
 extension DetailViewController {
     
     func setupLayout(withViews views: [UIView]) {
-        
         view.addSubviews(views)
+        mapView!.layer.cornerRadius = 12
         var counter: Int = 0
         for _view in views {
             _view.sizeToFit()
@@ -50,6 +61,9 @@ extension DetailViewController {
             _view.snp.makeConstraints({ (make) in
                 if counter == 0 {
                     make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(_width*0.9)
+                    make.height.equalTo(_height*0.4)
                 } else { make.top.equalTo(views[counter-1].snp.bottom).offset(_width*0.03)}
                 make.left.equalToSuperview().offset(_width*0.03)
             })

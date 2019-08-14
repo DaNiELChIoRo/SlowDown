@@ -16,6 +16,7 @@ class MapView: MKMapView  {
     var currentLocation: CLLocationCoordinate2D?
     var locationManager: CLLocationManager?
     var cameraLocations = [MKPointAnnotation]()
+//    var cameraLocation =
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,23 +24,28 @@ class MapView: MKMapView  {
         setupView(nil)
     }
     
-    init(annotations: [MKPointAnnotation]) {
+    init(withLocation location: CLLocationCoordinate2D) {
         self.init()
         setupLocationServices()
-        setupView(annotations)
+        setupView(location)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView(_ annotations: [MKPointAnnotation]?) {
+    func setupView(_ location: CLLocationCoordinate2D?) {
         guard let userCoordinates = locationManager?.location?.coordinate else { return }
         translatesAutoresizingMaskIntoConstraints = false
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
-        let region = MKCoordinateRegion(center: userCoordinates, span: span)
+        var region:MKCoordinateRegion
+        if let location = location {
+            region = MKCoordinateRegion(center: location, span: span)
+        } else {
+            region = MKCoordinateRegion(center: userCoordinates, span: span)
+            showsUserLocation = true
+        }
         showsCompass = true
-        showsUserLocation = true
         setRegion(region, animated: true)
         showsScale = true
     }
@@ -85,7 +91,7 @@ extension MapView: CLLocationManagerDelegate {
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-//        setRegion(region, animated: true)´
+//        setRegion(region, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

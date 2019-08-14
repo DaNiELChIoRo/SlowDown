@@ -59,8 +59,8 @@ extension HomePresenter: HomePresentable {
          camerasRequest()
     }
     
-    func showDetailView() {
-        coordinator?.showDetailsView()
+    func showDetailView(withLocation location:CLLocationCoordinate2D, withCamera camera: Camera) {
+        coordinator?.showDetailsView(withLocation: location, withCamera: camera)
     }
     
     func showAll() {

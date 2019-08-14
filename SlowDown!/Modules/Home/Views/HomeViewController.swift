@@ -71,11 +71,8 @@ class HomeViewController: UIViewController, HomeViewable {
 }
 
 let height = UIScreen.main.bounds.height
-
 extension HomeViewController {
-    
     func setupLayout() {
-        
         view.addSubviews([mapView!])
         mapView!.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -97,7 +94,7 @@ extension HomeViewController: MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             pinView!.canShowCallout = true
             let pinButton = UIButton(frame: CGRect(x: 0, y: 0, width: 47, height: 47))
-            pinButton.addTarget(self, action: #selector(onPinTapHandler), for: .touchDown)
+            pinButton.addTarget(self, action: #selector(onPinTapHandler(pinView)), for: .touchDown)
             pinButton.setImage(UIImage(named: "info"), for: .normal)
             pinButton.backgroundColor = .lightGray
             pinView!.leftCalloutAccessoryView = pinButton
@@ -108,9 +105,13 @@ extension HomeViewController: MKMapViewDelegate {
         return pinView
     }
     
-    @objc func onPinTapHandler() {
-        print("on tap pin gesture handler")
-        presenter?.showDetailView()
+    @objc func onPinTapHandler(_ sender: Any) {
+        print("on tap pin gesture handler", sender)
+        if let sender = sender as? MKPinAnnotationView {
+            let location = sender.annotation?.coordinate
+//            let camera = Camera(no: <#T##Int?#>, recordId: <#T##String?#>, latitude: <#T##String?#>, longitude: <#T##String?#>, mainStreet: <#T##String?#>, secondStreet: <#T##String?#>, geoShape: <#T##GeoShape?#>)
+//            presenter?.showDetailView(withLocation: location, withCamera: camera)
+        }
     }
     
 }
