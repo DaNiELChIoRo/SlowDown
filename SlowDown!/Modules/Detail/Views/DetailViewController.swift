@@ -18,6 +18,7 @@ class DetailViewController: UIViewController, DetailViewable {
     var secondaryStreetLabel: UILabel?
     var directionLabel: UILabel?
     var mainStreet: String = ""
+    var secondaryStreet: String = ""
     var direction: String = ""
     var location: CLLocationCoordinate2D?
     
@@ -28,8 +29,12 @@ class DetailViewController: UIViewController, DetailViewable {
     init(withLocation location: CLLocationCoordinate2D, andCamera camera: Camera) {
         super.init(nibName: nil, bundle: nil)
         self.location = location
-        guard let mainStreet = camera.mainStreet else { return }
+        guard let mainStreet = camera.mainStreet,
+            let sentido = camera.sentido,
+            let secondaryStreet = camera.secondStreet  else { return }
         self.mainStreet = mainStreet
+        self.secondaryStreet = secondaryStreet
+        self.direction = sentido
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,32 +50,34 @@ class DetailViewController: UIViewController, DetailViewable {
         view.backgroundColor = .white
         title = "Fotocivica Detalle"
         mapView = MapView(withLocation: location!)
-        mainStreetLabel = defaulLabel(text: "calle Principal: " + mainStreet, textAlignment: .left, fontSize: 18)
-        directionLabel = defaulLabel(text: "sentido: ", textAlignment: .center, fontSize: 18)
-        setupLayout(withViews: [mapView!, mainStreetLabel!, directionLabel!])
+        mainStreetLabel = defaulLabel(text: "Ubicación: " + mainStreet, textAlignment: .left, fontSize: 18)
+        secondaryStreetLabel = defaulLabel(text: "Vía principal: " + secondaryStreet, textAlignment: .left, fontSize: 18)
+        directionLabel = defaulLabel(text: "sentido del la vía: " + direction, textAlignment: .left, fontSize: 18)
+        setupLayout(withViews: [mapView!, mainStreetLabel!, secondaryStreetLabel!, directionLabel!])
     }
     
 }
 
-let _height = UIScreen.main.bounds.height
 let _width = UIScreen.main.bounds.width
 extension DetailViewController {
     
     func setupLayout(withViews views: [UIView]) {
         view.addSubviews(views)
-        mapView!.layer.cornerRadius = 12
+        mapView!.layer.cornerRadius = 6
         var counter: Int = 0
         for _view in views {
             _view.sizeToFit()
-            _view.backgroundColor = .red
+//            _view.backgroundColor = .red
             _view.snp.makeConstraints({ (make) in
                 if counter == 0 {
-                    make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+                    make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(_width*0.03)
                     make.centerX.equalToSuperview()
-                    make.width.equalTo(_width*0.9)
-                    make.height.equalTo(_height*0.4)
-                } else { make.top.equalTo(views[counter-1].snp.bottom).offset(_width*0.03)}
-                make.left.equalToSuperview().offset(_width*0.03)
+                    make.width.equalTo(_width*0.95)
+                    make.height.equalTo(height*0.4)
+                } else {
+                    make.top.equalTo(views[counter-1].snp.bottom).offset(_width*0.03)}
+                    make.left.equalToSuperview().offset(_width*0.03)
+                    make.right.equalToSuperview().offset(-_width*0.03)
             })
              counter += 1
         }

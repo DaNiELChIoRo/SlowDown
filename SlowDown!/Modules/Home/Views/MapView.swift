@@ -16,12 +16,20 @@ class MapView: MKMapView  {
     var currentLocation: CLLocationCoordinate2D?
     var locationManager: CLLocationManager?
     var cameraLocations = [MKPointAnnotation]()
-//    var cameraLocation =
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLocationServices()
         setupView(nil)
+    }
+    
+    override func layoutSubviews() {
+        if let compass = self.subviews.filter({ $0.isKind(of: NSClassFromString("MKCompassView")!) }).first {
+            compass.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(_width*0.03)
+                make.trailing.equalToSuperview().offset(-_width*0.03)
+            }
+        }
     }
     
     init(withLocation location: CLLocationCoordinate2D?) {
@@ -41,6 +49,7 @@ class MapView: MKMapView  {
         var region:MKCoordinateRegion
         if let location = location {
             region = MKCoordinateRegion(center: location, span: span)
+            setCameraLocation(withLocation: location)
             showsUserLocation = false
         } else {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
@@ -49,6 +58,13 @@ class MapView: MKMapView  {
         showsCompass = true
         setRegion(region, animated: true)
         showsScale = true
+    }
+    
+    func setCameraLocation(withLocation location: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        addAnnotation(annotation)
+        setCompassLayout()
     }
     
     func setupLocationServices() {
@@ -74,6 +90,17 @@ class MapView: MKMapView  {
             let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
             UserNotificationService.shared.defaultNotificationRequest(id: location.title!, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .default, trigger: trigger)
         }        
+    }
+    
+    func setCompassLayout() {
+        let compass = MKCompassButton(mapView: self)
+        compass.compassVisibility = .visible
+        showsCompass = false
+        addSubview(compass)
+        compass.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(_width*0.03)
+            make.trailing.equalToSuperview().offset(-_width*0.03)
+        }
     }
 }
 

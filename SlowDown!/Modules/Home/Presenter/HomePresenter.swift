@@ -40,8 +40,8 @@ class HomePresenter: NSObject {
                 for dat in data {
                     let datos = dat.fields
 //                    print(datos.geoShape.type, datos.mainStreet, datos.geoShape.type, datos.sentido)
-                    if datos.geoShape.type != "LineShape" {
-                        let camera = Camera(no: Int(datos.no), recordId: dat.recordid, latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet, geoShape: datos.geoShape)
+                    if datos.geoShape.type != "LineShape" {                        
+                        let camera = Camera(no: Int(datos.no), recordId: dat.recordid, latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet, sentido: datos.sentido, geoShape: datos.geoShape)
                         self.cameras.append(camera)
                     }
                 }

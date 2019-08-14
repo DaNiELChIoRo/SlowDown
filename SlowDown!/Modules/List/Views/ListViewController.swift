@@ -12,7 +12,9 @@ import SnapKit
 class ListViewController: UITableViewController, ListViewable {
     
     internal var presenter: ListPresentable?
-    private var cameras = [Camera]()    
+    private var cameras = [Camera]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +31,14 @@ class ListViewController: UITableViewController, ListViewable {
     }
     
     func setup(presenter: ListPresentable) {
-        view.backgroundColor = .white
-        title = "Lista de todas las fotocivicas"
         self.presenter = presenter
         setupView()
+        setupLayout()
     }
     
     func setupView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,6 +63,19 @@ class ListViewController: UITableViewController, ListViewable {
 
 extension ListViewController {
     func setupLayout() {
-        
+        view.backgroundColor = .white
+        title = "Fotocivicas"
+//        navigationItem.largeTitleDisplayMode = .never
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar por calle"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+}
+
+extension ListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
     }
 }
