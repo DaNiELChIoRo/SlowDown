@@ -13,9 +13,11 @@ class ListPresenter: NSObject, ListPresentable {
     var coordinator: MainCoordinator?
     var view: ListViewable?
     private var cameras = [Camera]()
+    private var filteredCameras = [Camera]()
     
     let notificationCenter = NotificationCenter.default
     static let listCamerasAllNotification = Notification.Name("listAllCamerasNotification")
+    let searchController = UISearchController(searchResultsController: nil)
     
     init(coordinator: MainCoordinator, cameras: [Camera]) {
         self.coordinator = coordinator
@@ -26,6 +28,11 @@ class ListPresenter: NSObject, ListPresentable {
     func attach(view: ListViewable) {
         self.view = view
         self.view!.setup(presenter: self as ListPresentable)
+    }
+    
+    func setupLayout() {
+        searchController.searchResultsUpdater = self
+        self.view?.setupLayout(searchController: searchController)
     }
     
     func showDetailView(withCamera camera: Camera) {
@@ -39,6 +46,25 @@ class ListPresenter: NSObject, ListPresentable {
         if let cameras = notification.userInfo?["cameras"] as? [Camera] {
             print(cameras)
         }
+    }
+}
+
+extension ListPresenter: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
+        if let searchText = searchController.searchBar.text {
+            print(searchText)
+            if searchText != "" {
+                filterContentForSearchText(searchText)
+            }
+        }
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredCameras = cameras.filter({ (camera) -> Bool in
+            guard let cameraStreeet = camera.mainStreet else { return false }
+            return cameraStreeet.lowercased().contains(searchText.lowercased())
+        })
     }
 }
 
