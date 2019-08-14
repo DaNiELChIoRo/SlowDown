@@ -20,5 +20,5 @@ protocol HomePresentable {
     var coordinator: MainCoordinator? { get set }
     func fetchCameras()        
     func showAll()
-    func showDetailView(withLocation location:CLLocationCoordinate2D, withCamera camera: Camera)
+    func showDetailView(withLocation location:CLLocationCoordinate2D, withIdentifier identifier: String)
 }

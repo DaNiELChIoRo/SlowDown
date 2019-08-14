@@ -24,7 +24,7 @@ class MapView: MKMapView  {
         setupView(nil)
     }
     
-    init(withLocation location: CLLocationCoordinate2D) {
+    init(withLocation location: CLLocationCoordinate2D?) {
         self.init()
         setupLocationServices()
         setupView(location)
@@ -41,6 +41,7 @@ class MapView: MKMapView  {
         var region:MKCoordinateRegion
         if let location = location {
             region = MKCoordinateRegion(center: location, span: span)
+            showsUserLocation = false
         } else {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
             showsUserLocation = true
@@ -77,6 +78,7 @@ class MapView: MKMapView  {
 }
 
 extension MapView: CLLocationManagerDelegate {
+    //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse || status == .authorizedAlways {
         }
@@ -91,7 +93,6 @@ extension MapView: CLLocationManagerDelegate {
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-//        setRegion(region, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

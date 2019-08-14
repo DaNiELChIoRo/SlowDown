@@ -59,12 +59,20 @@ extension HomePresenter: HomePresentable {
          camerasRequest()
     }
     
-    func showDetailView(withLocation location:CLLocationCoordinate2D, withCamera camera: Camera) {
-        coordinator?.showDetailsView(withLocation: location, withCamera: camera)
+    func showDetailView(withLocation location:CLLocationCoordinate2D, withIdentifier identifier: String) {
+        var camera: Camera
+        for _camera in cameras {
+            if let id = _camera.recordId {
+                if id == identifier {
+                    camera = _camera
+                    coordinator?.showDetailsView(withLocation: location, withCamera: camera)
+                    break
+                }
+            }            
+        }
     }
     
     func showAll() {
-        let camerasData:[String: Any] = ["cameras": cameras]
         coordinator?.showListView(cameras: self.cameras)
 //        notificationCenter.post(name: HomePresenter.listCamerasAllNotification, object: nil, userInfo: camerasData)
     }

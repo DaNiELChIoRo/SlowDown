@@ -17,6 +17,9 @@ class DetailViewController: UIViewController, DetailViewable {
     var mainStreetLabel: UILabel?
     var secondaryStreetLabel: UILabel?
     var directionLabel: UILabel?
+    var mainStreet: String = ""
+    var direction: String = ""
+    var location: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,9 @@ class DetailViewController: UIViewController, DetailViewable {
     
     init(withLocation location: CLLocationCoordinate2D, andCamera camera: Camera) {
         super.init(nibName: nil, bundle: nil)
-        mapView = MapView(withLocation: location)
+        self.location = location
+        guard let mainStreet = camera.mainStreet else { return }
+        self.mainStreet = mainStreet
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,8 +44,8 @@ class DetailViewController: UIViewController, DetailViewable {
     func setupView() {
         view.backgroundColor = .white
         title = "Fotocivica Detalle"
-        mapView = MapView()
-        mainStreetLabel = defaulLabel(text: "calle Principal: ", textAlignment: .left, fontSize: 18)
+        mapView = MapView(withLocation: location!)
+        mainStreetLabel = defaulLabel(text: "calle Principal: " + mainStreet, textAlignment: .left, fontSize: 18)
         directionLabel = defaulLabel(text: "sentido: ", textAlignment: .center, fontSize: 18)
         setupLayout(withViews: [mapView!, mainStreetLabel!, directionLabel!])
     }
