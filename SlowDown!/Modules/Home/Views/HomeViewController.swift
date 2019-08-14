@@ -92,9 +92,9 @@ extension HomeViewController: MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            pinView!.canShowCallout = true
+            pinView!.canShowCallout = true            
             let pinButton = UIButton(frame: CGRect(x: 0, y: 0, width: 47, height: 47))
-            pinButton.addTarget(self, action: #selector(onPinTapHandler(pinView)), for: .touchDown)
+            pinButton.addTarget(self, action: #selector(onPinTapHandler), for: .touchDown)
             pinButton.setImage(UIImage(named: "info"), for: .normal)
             pinButton.backgroundColor = .lightGray
             pinView!.leftCalloutAccessoryView = pinButton
@@ -105,9 +105,10 @@ extension HomeViewController: MKMapViewDelegate {
         return pinView
     }
     
-    @objc func onPinTapHandler(_ sender: Any) {
-        print("on tap pin gesture handler", sender)
-        if let sender = sender as? MKPinAnnotationView {
+    @objc func onPinTapHandler(_ sender: UIButton) {
+        print("on tap pin gesture handler")
+        if let sender = sender.superview as? MKPinAnnotationView {
+            print(sender)
             let location = sender.annotation?.coordinate
 //            let camera = Camera(no: <#T##Int?#>, recordId: <#T##String?#>, latitude: <#T##String?#>, longitude: <#T##String?#>, mainStreet: <#T##String?#>, secondStreet: <#T##String?#>, geoShape: <#T##GeoShape?#>)
 //            presenter?.showDetailView(withLocation: location, withCamera: camera)
