@@ -31,6 +31,7 @@ class ListViewController: UITableViewController, ListViewable {
     func setup(presenter: ListPresentable) {
         view.backgroundColor = .white
         title = "Lista de todas las fotocivicas"
+        self.presenter = presenter
         setupView()
     }
     
@@ -51,8 +52,9 @@ class ListViewController: UITableViewController, ListViewable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = cameras[indexPath.row]
-        print(item.self)
+        let camera = cameras[indexPath.row]
+        presenter?.showDetailView(withCamera: camera)
+        print(camera.self)
     }
 
 }

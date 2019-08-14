@@ -12,6 +12,7 @@ protocol ListPresentable {
     var coordinator: MainCoordinator? { get set}
     var view: ListViewable? { get set }
     func attach(view: ListViewable)
+    func showDetailView(withCamera camera: Camera)
 }
 
 protocol ListViewable {

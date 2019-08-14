@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class ListPresenter: ListPresentable {
     var coordinator: MainCoordinator?
@@ -23,6 +24,13 @@ class ListPresenter: ListPresentable {
     func attach(view: ListViewable) {
         self.view = view
         self.view!.setup(presenter: self as ListPresentable)
+    }
+    
+    func showDetailView(withCamera camera: Camera) {
+        guard let longitude = Double(camera.latitude!),
+            let latitude = Double(camera.longitude!) else { return }
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        coordinator?.showDetailsView(withLocation: location, withCamera: camera)
     }
     
     @objc func didRecieveCameras(_ notification: NSNotification) {
