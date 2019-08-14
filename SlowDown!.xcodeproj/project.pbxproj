@@ -161,6 +161,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A06721522304ADAE00B718C8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A06721532304ADC100B718C8 /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A06721532304ADC100B718C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0297BCC22FCD27C0008C49B /* MapView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A0696CA622FE1C9F002D1A7F /* UserNotificationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +247,7 @@
 		A07A42B422F495A5005ED63F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A06721522304ADAE00B718C8 /* Common */,
 				A07A42BA22F495E3005ED63F /* Detail */,
 				A07A42B922F495DC005ED63F /* List */,
 				A07A42B822F495D6005ED63F /* Home */,
@@ -333,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				A07A42C922F4992A005ED63F /* HomeViewController.swift */,
-				A0297BCC22FCD27C0008C49B /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
