@@ -85,7 +85,7 @@ class MapView: MKMapView  {
             let region = CLCircularRegion(center: location.coordinate, radius: 100, identifier: "fotocivica@\(location.title!)")
             region.notifyOnEntry = true
             region.notifyOnExit = false
-//            locationManager?.startMonitoring(for: region)
+            locationManager?.startMonitoring(for: region)
             guard let id = location.subtitle else { return }
             setCameraNotification(withRegion: region, withId: id)
         }
@@ -112,7 +112,11 @@ class MapView: MKMapView  {
 extension MapView: CLLocationManagerDelegate {
     //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
+        if status == .authorizedAlways {
+            print("this is going to work!!")
+        } else if status == .authorizedWhenInUse {
+            print("this is not going to work")
+            locationManager?.requestAlwaysAuthorization()
         }
     }
     

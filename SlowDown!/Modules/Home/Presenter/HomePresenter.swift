@@ -23,11 +23,7 @@ class HomePresenter: NSObject {
     init(api: API, coordinator: MainCoordinator) {
         super.init()
         self.api = api
-        self.coordinator = coordinator
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        self.coordinator = coordinator        
     }
     
     private func camerasRequest() {
@@ -80,21 +76,5 @@ extension HomePresenter: HomePresentable {
         //        self.view?.showListButton {
         //
         //        }       
-    }
-}
-
-extension HomePresenter: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-        } 
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first?.coordinate else { return }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error al intentar obtener la ubicación del usuario!, error message: \(error.localizedDescription)")
     }
 }
