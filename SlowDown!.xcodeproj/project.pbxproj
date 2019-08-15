@@ -25,7 +25,7 @@
 		A07A428C22F4958B005ED63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428A22F4958B005ED63F /* Main.storyboard */; };
 		A07A428E22F4958C005ED63F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A07A428D22F4958C005ED63F /* Assets.xcassets */; };
 		A07A429122F4958C005ED63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428F22F4958C005ED63F /* LaunchScreen.storyboard */; };
-		A07A429C22F4958C005ED63F /* SlowDown_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A429B22F4958C005ED63F /* SlowDown_Tests.swift */; };
+		A07A429C22F4958C005ED63F /* SlowDown_Tests_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A429B22F4958C005ED63F /* SlowDown_Tests_Home.swift */; };
 		A07A42A722F4958C005ED63F /* SlowDown_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42A622F4958C005ED63F /* SlowDown_UITests.swift */; };
 		A07A42C222F49623005ED63F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42C122F49623005ED63F /* MainCoordinator.swift */; };
 		A07A42C422F4962D005ED63F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42C322F4962D005ED63F /* Coordinator.swift */; };
@@ -87,7 +87,7 @@
 		A07A429022F4958C005ED63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A07A429222F4958C005ED63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07A429722F4958C005ED63F /* SlowDown!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SlowDown!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A07A429B22F4958C005ED63F /* SlowDown_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowDown_Tests.swift; sourceTree = "<group>"; };
+		A07A429B22F4958C005ED63F /* SlowDown_Tests_Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowDown_Tests_Home.swift; sourceTree = "<group>"; };
 		A07A429D22F4958C005ED63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07A42A222F4958C005ED63F /* SlowDown!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SlowDown!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07A42A622F4958C005ED63F /* SlowDown_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowDown_UITests.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		A07A429A22F4958C005ED63F /* SlowDown!Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A07A429B22F4958C005ED63F /* SlowDown_Tests.swift */,
+				A07A429B22F4958C005ED63F /* SlowDown_Tests_Home.swift */,
 				A07A429D22F4958C005ED63F /* Info.plist */,
 			);
 			path = "SlowDown!Tests";
@@ -663,7 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07A429C22F4958C005ED63F /* SlowDown_Tests.swift in Sources */,
+				A07A429C22F4958C005ED63F /* SlowDown_Tests_Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

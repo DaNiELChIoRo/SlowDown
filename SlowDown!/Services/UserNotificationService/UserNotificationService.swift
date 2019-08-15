@@ -35,6 +35,27 @@ class UserNotificationService: NSObject {
         userNotificationCenter.delegate = self
     }
     
+    //REQUIRIENDO EL PERMISO DEL USUARIO PARA NOTIFICACIONES
+    func registerForPushNotifications() {
+        userNotificationCenter
+            .requestAuthorization(options: [.alert, .sound]) { // declaramos el tipo de notificaciones que se utilizaran
+                [weak self] granted, error in
+                guard granted else { return }
+                self?.getNotificationSettings()
+                print("Permission granted: \(granted)") // 3
+        }
+    }
+    
+    //accediendo a la configuración actual del usuario sobre los permisos de nuestra applicación
+    func getNotificationSettings() {
+        userNotificationCenter.getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { print (" no se han autorizado las notificaciones por el usuario! ")
+                return
+            }
+        }
+    }
+    
     func defaultNotificationRequest(id: String, title:String, body:String, sound: UNNotificationSound, trigger: UNNotificationTrigger) {
         let content = UNMutableNotificationContent()
         content.title = title

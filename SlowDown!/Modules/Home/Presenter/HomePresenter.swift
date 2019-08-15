@@ -28,19 +28,16 @@ class HomePresenter: NSObject {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        if CLLocationManager.locationServicesEnabled() {
-            
-        }
     }
     
-    func camerasRequest() {
+    private func camerasRequest() {
         api.fetchAllCameras(dataSet: "fotocivicas") { (result: Result<[CameraResponse]>) in
             switch result {
             case .success(let data):
                 for dat in data {
                     let datos = dat.fields
-//                    print(datos.geoShape.type, datos.mainStreet, datos.geoShape.type, datos.sentido)
-                    if datos.geoShape.type != "LineShape" {                        
+                    if datos.geoShape.type != "LineString" {
+                        print(datos.geoShape.type, datos.mainStreet, datos.geoShape.type, datos.sentido)
                         let camera = Camera(no: Int(datos.no), recordId: dat.recordid, latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet, sentido: datos.sentido, geoShape: datos.geoShape)
                         self.cameras.append(camera)
                     }

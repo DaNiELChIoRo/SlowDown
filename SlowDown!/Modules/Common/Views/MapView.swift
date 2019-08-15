@@ -84,11 +84,17 @@ class MapView: MKMapView  {
         for location in locations {
             let region = CLCircularRegion(center: location.coordinate, radius: 100, identifier: "fotocivica@\(location.title!)")
             region.notifyOnEntry = true
-            region.notifyOnExit = true
+            region.notifyOnExit = false
 //            locationManager?.startMonitoring(for: region)
-            let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-            UserNotificationService.shared.defaultNotificationRequest(id: location.title!, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .default, trigger: trigger)
-        }        
+            guard let id = location.subtitle else { return }
+            setCameraNotification(withRegion: region, withId: id)
+        }
+    }
+    
+    func setCameraNotification(withRegion region: CLCircularRegion, withId id: String) {
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+//        UserNotificationService.shared.removeNotification(identifier: "userNotification.fotocivica."+location.title!)
+        UserNotificationService.shared.defaultNotificationRequest(id: id, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .default, trigger: trigger)
     }
     
     func setCompassLayout() {

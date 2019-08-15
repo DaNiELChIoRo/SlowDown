@@ -14,13 +14,13 @@ class defaulLabel: UILabel {
         super.init(frame: frame)
     }
     
-    convenience init(text title: String, textColor color: UIColor = UIColor.black, textAlignment alignment: NSTextAlignment, fontSize: CGFloat) {
-        self.init()
+    convenience init(text title: String, textColor color: UIColor = UIColor.black, textAlignment alignment: NSTextAlignment, withFontWeight fontWeight: UIFont.Weight = UIFont.Weight.regular, fontSize: CGFloat) {
+        self.init()        
         text = title
         textColor = color
         numberOfLines = 0
         textAlignment = alignment
-        font = UIFont(descriptor: .preferredFontDescriptor(withTextStyle: .body), size: fontSize)
+        font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
         translatesAutoresizingMaskIntoConstraints = false
     }
     

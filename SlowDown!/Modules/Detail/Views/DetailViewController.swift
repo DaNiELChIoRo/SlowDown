@@ -14,8 +14,11 @@ class DetailViewController: UIViewController, DetailViewable {
 
     internal var presenter: DetailPresentable?
     var mapView: MapView?
+    var mainStreetTitleLabel: UILabel?
     var mainStreetLabel: UILabel?
+    var secondaryStreetTitleLabel: UILabel?
     var secondaryStreetLabel: UILabel?
+    var directionTitleLabel: UILabel?
     var directionLabel: UILabel?
     var mainStreet: String = ""
     var secondaryStreet: String = ""
@@ -50,10 +53,13 @@ class DetailViewController: UIViewController, DetailViewable {
         view.backgroundColor = .white
         title = "Fotocivica Detalle"
         mapView = MapView(withLocation: location!)
-        mainStreetLabel = defaulLabel(text: "Ubicación: " + mainStreet, textAlignment: .left, fontSize: 18)
-        secondaryStreetLabel = defaulLabel(text: "Vía principal: " + secondaryStreet, textAlignment: .left, fontSize: 18)
-        directionLabel = defaulLabel(text: "sentido del la vía: " + direction, textAlignment: .left, fontSize: 18)
-        setupLayout(withViews: [mapView!, mainStreetLabel!, secondaryStreetLabel!, directionLabel!])
+        mainStreetTitleLabel = defaulLabel(text: "Ubicación" , textAlignment: .center, withFontWeight: .bold, fontSize: 18)
+        mainStreetLabel = defaulLabel(text: mainStreet, textAlignment: .center, fontSize: 18)
+        secondaryStreetTitleLabel = defaulLabel(text: "Vía principal", textAlignment: .center, withFontWeight: .bold,fontSize: 18)
+        secondaryStreetLabel = defaulLabel(text: secondaryStreet, textAlignment: .center, fontSize: 18)
+        directionTitleLabel = defaulLabel(text: "Sentido del la vía" , textAlignment: .center, withFontWeight: .bold, fontSize: 18)
+        directionLabel = defaulLabel(text:  direction, textAlignment: .center, fontSize: 18)
+        setupLayout(withViews: [mapView!, mainStreetTitleLabel!, mainStreetLabel!, secondaryStreetTitleLabel!, secondaryStreetLabel!, directionTitleLabel!, directionLabel!])
     }
     
 }
