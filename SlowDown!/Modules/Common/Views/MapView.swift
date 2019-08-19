@@ -13,9 +13,13 @@ import UserNotifications
 
 class MapView: MKMapView  {
     
+    let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
+    let defaultCenter = CLLocationCoordinate2D(latitude: 19.42452, longitude: -99.23423)
+    
     var currentLocation: CLLocationCoordinate2D?
     var locationManager: CLLocationManager?
     var cameraLocations = [MKPointAnnotation]()
+    var userRegion: MKCoordinateRegion? = MKCoordinateRegion(center: defaultCenter, span: defaultSpan)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,6 +53,7 @@ class MapView: MKMapView  {
         var region:MKCoordinateRegion
         if let location = location {
             region = MKCoordinateRegion(center: location, span: span)
+            userRegion = region
             setCameraLocation(withLocation: location)            
         } else {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
@@ -86,8 +91,8 @@ class MapView: MKMapView  {
             region.notifyOnEntry = true
             region.notifyOnExit = false
             locationManager?.startMonitoring(for: region)
-            guard let id = location.subtitle else { return }
-            setCameraNotification(withRegion: region, withId: id)
+//            guard let id = location.subtitle else { return }
+//            setCameraNotification(withRegion: region, withId: id)
         }
     }
     
@@ -121,7 +126,10 @@ extension MapView: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if currentLocation == nil || cameraLocations.isEmpty { return }
+        //        TO-DO: Something that tell us which fotocivica is the one we are entering
+        let timestamp = Date().timeIntervalSince1970
+        let id = String(timestamp)
+        UserNotificationService.shared.defaultNotificationRequest(id: id, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .defaultCritical)
         print("Algo")
     }
     
@@ -129,6 +137,34 @@ extension MapView: CLLocationManagerDelegate {
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
+        if region.center.latitude != userRegion!.center.latitude && region.center.longitude != userRegion!.center.longitude {
+            userRegion = region
+            createCenterButton()
+        }
+    }
+    
+    @objc func centerButtonHandler(_ region: MKCoordinateRegion, _ sender: UIButton) {
+        guard let region = userRegion else { return }
+        setRegion(region, animated: false)
+        for _view in subviews {
+            if _view === sender.self {
+                _view.removeFromSuperview()
+            }
+        }
+    }
+    
+    func createCenterButton() {
+        print("creating the centering button")
+        let centerButton = UIButton()
+        centerButton.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
+        centerButton.backgroundColor = .lightGray
+        addSubview(centerButton)
+        centerButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-height*0.1)
+            make.trailing.equalToSuperview().offset(-_width*0.03)
+            make.height.equalTo(_width*0.05)
+            make.width.equalTo(_width*0.05)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

@@ -45,7 +45,7 @@ class UserNotificationService: NSObject {
                 print("Permission granted: \(granted)") // 3
         }
     }
-    
+
     //accediendo a la configuración actual del usuario sobre los permisos de nuestra applicación
     func getNotificationSettings() {
         userNotificationCenter.getNotificationSettings { settings in
@@ -56,7 +56,8 @@ class UserNotificationService: NSObject {
         }
     }
     
-    func defaultNotificationRequest(id: String, title:String, body:String, sound: UNNotificationSound, trigger: UNNotificationTrigger) {
+    func defaultNotificationRequest(id: String, title:String, body:String, sound: UNNotificationSound, trigger: UNNotificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)) {
+        
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
