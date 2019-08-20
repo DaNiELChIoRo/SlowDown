@@ -13,13 +13,11 @@ import UserNotifications
 
 class MapView: MKMapView  {
     
-    let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
-    let defaultCenter = CLLocationCoordinate2D(latitude: 19.42452, longitude: -99.23423)
-    
     var currentLocation: CLLocationCoordinate2D?
     var locationManager: CLLocationManager?
     var cameraLocations = [MKPointAnnotation]()
-    var userRegion: MKCoordinateRegion? = MKCoordinateRegion(center: defaultCenter, span: defaultSpan)
+    var userRegion: MKCoordinateRegion?
+    var flag:Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,9 +88,9 @@ class MapView: MKMapView  {
             let region = CLCircularRegion(center: location.coordinate, radius: 100, identifier: "fotocivica@\(location.title!)")
             region.notifyOnEntry = true
             region.notifyOnExit = false
-            locationManager?.startMonitoring(for: region)
-//            guard let id = location.subtitle else { return }
-//            setCameraNotification(withRegion: region, withId: id)
+//            locationManager?.startMonitoring(for: region)
+            guard let id = location.subtitle else { return }
+            setCameraNotification(withRegion: region, withId: id)
         }
     }
     
@@ -137,9 +135,25 @@ extension MapView: CLLocationManagerDelegate {
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-        if region.center.latitude != userRegion!.center.latitude && region.center.longitude != userRegion!.center.longitude {
+        if !flag {
             userRegion = region
-            createCenterButton()
+            flag = true
+        } else {
+            if region.center.latitude != userRegion!.center.latitude && region.center.longitude != userRegion!.center.longitude {
+                userRegion = region
+                createCenterButton()
+            } else {
+                eliminateCenterButton()
+            }
+        }
+    }
+    
+    func eliminateCenterButton() {
+        for _view in subviews {
+            if _view === UIButton.self {
+                print("destoying the centering button")
+                _view.removeFromSuperview()
+            }
         }
     }
     
@@ -148,6 +162,7 @@ extension MapView: CLLocationManagerDelegate {
         setRegion(region, animated: false)
         for _view in subviews {
             if _view === sender.self {
+                print("destoying the centering button")
                 _view.removeFromSuperview()
             }
         }

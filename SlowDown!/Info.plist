@@ -24,6 +24,11 @@
 	<string>Se hará uso de la ubicación del usuario para fines descriptivos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Es necesario el uso de la ubicación del usuario mientras se hace uso de la aplicación</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

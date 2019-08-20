@@ -2,7 +2,19 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Downloads/fotocivicas_ruta.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Downloads/fotocivica.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:fotocivicas_100kph.gpx">
+   </FileRef>
+   <FileRef
       location = "group:../../../../Downloads/IronBit.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:fotocivicas_ruta2.gpx">
    </FileRef>
    <FileRef
       location = "group:../../../../Downloads/default.gpx">
