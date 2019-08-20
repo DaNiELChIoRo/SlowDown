@@ -18,6 +18,7 @@ class MapView: MKMapView  {
     var cameraLocations = [MKPointAnnotation]()
     var userRegion: MKCoordinateRegion?
     var flag:Bool = false
+    var allRegions : [CLRegion] = [] // Fill all your regions
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,9 +89,10 @@ class MapView: MKMapView  {
             let region = CLCircularRegion(center: location.coordinate, radius: 100, identifier: "fotocivica@\(location.title!)")
             region.notifyOnEntry = true
             region.notifyOnExit = false
+            allRegions.append(region)
 //            locationManager?.startMonitoring(for: region)
-            guard let id = location.subtitle else { return }
-            setCameraNotification(withRegion: region, withId: id)
+//            guard let id = location.subtitle else { return }
+//            setCameraNotification(withRegion: region, withId: id)
         }
     }
     
@@ -124,7 +126,6 @@ extension MapView: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        //        TO-DO: Something that tell us which fotocivica is the one we are entering
         let timestamp = Date().timeIntervalSince1970
         let id = String(timestamp)
         UserNotificationService.shared.defaultNotificationRequest(id: id, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .defaultCritical)
@@ -132,6 +133,12 @@ extension MapView: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var _currentLocation : CLLocationCoordinate2D? {
+            didSet{
+                evaluateClosestRegions()
+            }
+        }
+
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
@@ -142,10 +149,40 @@ extension MapView: CLLocationManagerDelegate {
             if region.center.latitude != userRegion!.center.latitude && region.center.longitude != userRegion!.center.longitude {
                 userRegion = region
                 createCenterButton()
+                _currentLocation = currentLocation
             } else {
                 eliminateCenterButton()
             }
         }
+        
+        func evaluateClosestRegions() {
+            print("evaluateClosestRegions")
+            var allDistance : [Double] = []
+            //Calulate distance of each region's center to currentLocation
+            for region in allRegions {
+                let circularRegion = region as! CLCircularRegion
+                let distance = currentLocation!.distance(from: CLLocation(latitude: circularRegion.center.latitude, longitude: circularRegion.center.longitude))
+                allDistance.append(distance)
+            }
+            // a Array of Tuples
+            let distanceOfEachRegionToCurrentLocation = zip(allRegions, allDistance)
+            
+            //sort and get 20 closest
+            let twentyNearbyRegions = distanceOfEachRegionToCurrentLocation
+                .sorted{ tuple1, tuple2 in return tuple1.1 < tuple2.1 }
+                .prefix(20)
+            
+            // Remove all regions you were tracking before
+            for region in locationManager!.monitoredRegions {
+                locationManager!.stopMonitoring(for: region)
+            }
+            
+            twentyNearbyRegions.forEach{
+                locationManager?.startMonitoring(for: $0.0)
+            }
+            
+        }
+        
     }
     
     func eliminateCenterButton() {
