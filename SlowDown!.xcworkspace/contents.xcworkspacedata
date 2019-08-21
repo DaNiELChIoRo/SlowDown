@@ -20,7 +20,13 @@
       location = "group:fotocivica_Thiers_y_Darwin.gpx">
    </FileRef>
    <FileRef
+      location = "group:routa_Thiers_Eje_Central.gpx">
+   </FileRef>
+   <FileRef
       location = "group:../../../../Downloads/default.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:ruta_Thiers_Eje_Central_fast.gpx">
    </FileRef>
    <FileRef
       location = "group:ruta_fotocivica_Thiers.gpx">

@@ -98,10 +98,9 @@ class MapView: MKMapView  {
             region.notifyOnExit = false
             allRegions.append(region)
         }
-        evaluateClosestLocations(for: userLocation.location!)
+        guard let location = userLocation.location else { return }
+        evaluateClosestLocations(for: location)
     }
-    
-    
     
     func setCameraNotification(withRegion region: CLCircularRegion, withId id: String) {
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
@@ -130,8 +129,8 @@ extension MapView {
     }
     
     func evaluateClosestLocations(for location: CLLocation) {
-        guard userExitRegion else { return }
-        userExitRegion = false
+//        guard userExitRegion else { return }
+//        userExitRegion = false
         print("evaluateClosestRegions")
         var allDistance : [Double] = []
         //Calulate distance of each region's center to currentLocation
@@ -149,7 +148,7 @@ extension MapView {
         
         // Remove all regions you were tracking before
         for region in locationManager!.monitoredRegions {
-            print("Monitored region about to be erase ", region)
+//            print("Monitored region about to be erase ", region)
             locationManager!.stopMonitoring(for: region)
         }
         
@@ -208,7 +207,6 @@ extension MapView: CLLocationManagerDelegate {
         func evaluateClosestRegions() {
             guard userExitRegion else { return }
             userExitRegion = false
-            print("evaluateClosestRegions")
             monitorUserCurrentRegion(inRegion: currentLocation!.coordinate)
             evaluateClosestLocations(for: currentLocation!)
         }
@@ -236,7 +234,7 @@ extension MapView: CLLocationManagerDelegate {
     }
     
     func createCenterButton() {
-        print("creating the centering button")
+//        print("creating the centering button")
         let centerButton = UIButton()
         centerButton.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
         centerButton.backgroundColor = .lightGray
