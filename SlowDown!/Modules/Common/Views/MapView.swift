@@ -20,7 +20,7 @@ class MapView: MKMapView  {
     var userRegion: MKCoordinateRegion?
     var flag:Bool = false
     var allRegions : [CLRegion] = [] // Fill all your regions
-    var userExitRegion: Bool = false
+    var userExitRegion: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -97,43 +97,11 @@ class MapView: MKMapView  {
             region.notifyOnEntry = true
             region.notifyOnExit = false
             allRegions.append(region)
-//            locationManager?.startMonitoring(for: region)
-//            guard let id = location.subtitle else { return }
-//            setCameraNotification(withRegion: region, withId: id)
         }
         evaluateClosestLocations(for: userLocation.location!)
     }
     
-    func evaluateClosestLocations(for location: CLLocation) {
-        guard userExitRegion else { return }
-        userExitRegion = false
-        print("evaluateClosestRegions")
-        var allDistance : [Double] = []
-        //Calulate distance of each region's center to currentLocation
-        for region in allRegions {
-            let circularRegion = region as! CLCircularRegion
-            let distance = location.distance(from: CLLocation(latitude: circularRegion.center.latitude, longitude: circularRegion.center.longitude))
-            allDistance.append(distance)
-        }
-        // a Array of Tuples
-        let distanceOfEachRegionToCurrentLocation = zip(allRegions, allDistance)
-        //sort and get 20 closest
-        let twentyNearbyRegions = distanceOfEachRegionToCurrentLocation
-            .sorted{ tuple1, tuple2 in return tuple1.1 < tuple2.1 }
-            .prefix(20)
-        
-        // Remove all regions you were tracking before
-        for region in locationManager!.monitoredRegions {
-            guard region.identifier == "userLocation" else { return }
-            print("Monitored region about to be erase ", region)
-            locationManager!.stopMonitoring(for: region)
-        }
-        
-        twentyNearbyRegions.forEach {
-            print("new monetored region ", $0.0)
-            locationManager?.startMonitoring(for: $0.0)
-        }
-    }
+    
     
     func setCameraNotification(withRegion region: CLCircularRegion, withId id: String) {
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
@@ -153,12 +121,49 @@ class MapView: MKMapView  {
     }
 }
 
+extension MapView {
+    func monitorUserCurrentRegion(inRegion center: CLLocationCoordinate2D) {
+        let _region = CLCircularRegion(center: center, radius: 100, identifier: "userLocationRegion")
+        _region.notifyOnEntry = false
+        _region.notifyOnExit = true
+        locationManager?.startMonitoring(for: _region)
+    }
+    
+    func evaluateClosestLocations(for location: CLLocation) {
+        guard userExitRegion else { return }
+        userExitRegion = false
+        print("evaluateClosestRegions")
+        var allDistance : [Double] = []
+        //Calulate distance of each region's center to currentLocation
+        for region in allRegions {
+            let circularRegion = region as! CLCircularRegion
+            let distance = location.distance(from: CLLocation(latitude: circularRegion.center.latitude, longitude: circularRegion.center.longitude))
+            allDistance.append(distance)
+        }
+        // a Array of Tuples
+        let distanceOfEachRegionToCurrentLocation = zip(allRegions, allDistance)
+        //sort and get 20 closest
+        let twentyNearbyRegions = distanceOfEachRegionToCurrentLocation
+            .sorted{ tuple1, tuple2 in return tuple1.1 < tuple2.1 }
+            .prefix(19)
+        
+        // Remove all regions you were tracking before
+        for region in locationManager!.monitoredRegions {
+            print("Monitored region about to be erase ", region)
+            locationManager!.stopMonitoring(for: region)
+        }
+        
+        twentyNearbyRegions.forEach {
+            print("new monetored region ", $0.0)
+            locationManager?.startMonitoring(for: $0.0)
+        }
+    }
+}
+
 extension MapView: CLLocationManagerDelegate {
     //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
-            print("this is going to work!!")
-        } else {
+        if status != .authorizedAlways {
             presenter?.onPermissionDenied()
         }
     }
@@ -188,10 +193,6 @@ extension MapView: CLLocationManagerDelegate {
         currentLocation = locations.first
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-        let _region = CLCircularRegion(center: location, radius: 100, identifier: "userLocationRegion")
-        _region.notifyOnEntry = false
-        _region.notifyOnExit = true
-        locationManager?.startMonitoring(for: _region)
         if !flag {
             userRegion = region
             flag = true
@@ -208,30 +209,8 @@ extension MapView: CLLocationManagerDelegate {
             guard userExitRegion else { return }
             userExitRegion = false
             print("evaluateClosestRegions")
-            var allDistance : [Double] = []
-            //Calulate distance of each region's center to currentLocation
-            for region in allRegions {
-                let circularRegion = region as! CLCircularRegion
-                let distance = currentLocation!.distance(from: CLLocation(latitude: circularRegion.center.latitude, longitude: circularRegion.center.longitude))
-                allDistance.append(distance)
-            }
-            // a Array of Tuples
-            let distanceOfEachRegionToCurrentLocation = zip(allRegions, allDistance)
-            //sort and get 20 closest
-            let twentyNearbyRegions = distanceOfEachRegionToCurrentLocation
-                .sorted{ tuple1, tuple2 in return tuple1.1 < tuple2.1 }
-                .prefix(20)
-
-            // Remove all regions you were tracking before
-            for region in locationManager!.monitoredRegions {
-                print("Monitored region about to be erase ", region)
-                locationManager!.stopMonitoring(for: region)
-            }
-
-            twentyNearbyRegions.forEach {
-                print("new monetored region ", $0.0)
-                locationManager?.startMonitoring(for: $0.0)
-            }
+            monitorUserCurrentRegion(inRegion: currentLocation!.coordinate)
+            evaluateClosestLocations(for: currentLocation!)
         }
         
     }
