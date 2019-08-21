@@ -33,7 +33,7 @@ class HomePresenter: NSObject {
                 for dat in data {
                     let datos = dat.fields
                     if datos.geoShape.type != "LineString" {
-                        print(datos.geoShape.type, datos.mainStreet, datos.geoShape.type, datos.sentido)
+//                        print(datos.geoShape.type, datos.mainStreet, datos.geoShape.type, datos.sentido)
                         let camera = Camera(no: Int(datos.no), recordId: dat.recordid, latitude: datos.latitude, longitude: datos.longitude, mainStreet: datos.mainStreet, secondStreet: datos.secondStreet, sentido: datos.sentido, geoShape: datos.geoShape)
                         self.cameras.append(camera)
                     }
@@ -73,8 +73,11 @@ extension HomePresenter: HomePresentable {
     func attach(view: HomeViewable) {
         self.view = view
         self.view?.setup(presenter: self as HomePresentable)
-        //        self.view?.showListButton {
-        //
-        //        }       
+    }
+}
+
+extension HomePresenter: MapViewPresentable {
+    func onPermissionDenied() {
+        view?.promptLocationUsageRequirement()
     }
 }

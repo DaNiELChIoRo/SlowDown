@@ -11,6 +11,7 @@
 		54EEB770DE6908960C143A6F /* Pods_SlowDown_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BCE376C9329C26DCBC0A1E /* Pods_SlowDown_UITests.framework */; };
 		A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BCC22FCD27C0008C49B /* MapView.swift */; };
 		A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BD122FCD3EE0008C49B /* UIViewController.swift */; };
+		A0694DBA230DB3E2003F1C9B /* MapViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0694DB9230DB3E2003F1C9B /* MapViewProtocols.swift */; };
 		A0696CA522FE1AB6002D1A7F /* UserNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */; };
 		A0696CA822FE1CB4002D1A7F /* NotificationCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */; };
 		A06C639023031C3A00ECDFDF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C638F23031C3A00ECDFDF /* DetailViewController.swift */; };
@@ -70,6 +71,7 @@
 		56FD472EE388B7A58C24CFCA /* Pods-SlowDown!Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0297BCC22FCD27C0008C49B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A0297BD122FCD3EE0008C49B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		A0694DB9230DB3E2003F1C9B /* MapViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewProtocols.swift; sourceTree = "<group>"; };
 		A0696CA422FE1AB6002D1A7F /* UserNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationService.swift; sourceTree = "<group>"; };
 		A0696CA722FE1CB4002D1A7F /* NotificationCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCategories.swift; sourceTree = "<group>"; };
 		A06C638F23031C3A00ECDFDF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		A06721522304ADAE00B718C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A0694DB8230DB3B8003F1C9B /* Protocols */,
 				A06721532304ADC100B718C8 /* Views */,
 			);
 			path = Common;
@@ -175,6 +178,14 @@
 				A0297BCC22FCD27C0008C49B /* MapView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A0694DB8230DB3B8003F1C9B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A0694DB9230DB3E2003F1C9B /* MapViewProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		A0696CA622FE1C9F002D1A7F /* UserNotificationService */ = {
@@ -645,6 +656,7 @@
 				A07A42C222F49623005ED63F /* MainCoordinator.swift in Sources */,
 				A07A42CF22F49E73005ED63F /* Network.swift in Sources */,
 				A06C639C23033E1C00ECDFDF /* ListPresenter.swift in Sources */,
+				A0694DBA230DB3E2003F1C9B /* MapViewProtocols.swift in Sources */,
 				A07A42CA22F4992A005ED63F /* HomeViewController.swift in Sources */,
 				A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */,
 				A07A42CC22F49C9D005ED63F /* API.swift in Sources */,

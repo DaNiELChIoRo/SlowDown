@@ -12,6 +12,8 @@ import MapKit
 
 class HomeViewController: UIViewController, HomeViewable {
     
+    
+    
     private var presenter: HomePresentable!
     private var mapView: MapView?
     
@@ -35,7 +37,7 @@ class HomeViewController: UIViewController, HomeViewable {
         text.sizeToFit()
         text.text = "Texto de Prueba"
 
-        self.mapView = MapView()
+        self.mapView = MapView(presenter: presenter as! MapViewPresentable)
         self.mapView?.delegate = self
         setupLayout()
         
@@ -70,6 +72,28 @@ class HomeViewController: UIViewController, HomeViewable {
         }
         self.mapView?.setCameraLocations(annotations)
     }
+    
+    func promptLocationUsageRequirement() {
+        let alertController = UIAlertController (title: "Title", message: "Go to Settings?", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 
 }
 
@@ -95,6 +119,10 @@ extension HomeViewController: MKMapViewDelegate {
             let location = view.annotation?.coordinate else { return }
         print("annotation touched with the address: ", address)
         presenter?.showDetailView(withLocation: location, withIdentifier: identifier)
+    }
+    
+    func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
+        
     }
     
 }

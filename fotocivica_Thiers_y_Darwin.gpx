@@ -1,0 +1,12 @@
+
+<gpx
+xmlns="http://www.topografix.com/GPX/1/1"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
+version="1.1"
+creator="gpx-poi.com">
+   <wpt lat="19.429957" lon="-99.174731">
+      <time>2019-08-09T22:41:12Z</time>
+      <name>Eje 3 Thiers y Darwin</name>
+   </wpt>
+</gpx>
