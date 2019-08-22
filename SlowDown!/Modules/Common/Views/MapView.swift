@@ -219,8 +219,8 @@ extension MapView: CLLocationManagerDelegate {
         }
         
         func evaluateClosestRegions() {
-//            print("calculating the new camaras for user!!")
-//            evaluateClosestLocations(for: currentLocation!)
+            print("calculating the new camaras for user!!")
+            evaluateClosestLocations(for: currentLocation!)
         }
         
     }
