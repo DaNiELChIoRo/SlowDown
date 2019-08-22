@@ -10,4 +10,5 @@ import Foundation
 
 protocol MapViewPresentable {
     func onPermissionDenied()
+    func mapViewShowCenterButton()
 }

@@ -94,6 +94,10 @@ class HomeViewController: UIViewController, HomeViewable {
         
         present(alertController, animated: true, completion: nil)
     }
+    
+    func showMapCenterButton() {
+        mapView?.createCenterButton()
+    }
 
 }
 
@@ -121,8 +125,9 @@ extension HomeViewController: MKMapViewDelegate {
         presenter?.showDetailView(withLocation: location, withIdentifier: identifier)
     }
     
-    func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
-        
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+//        mapView
+        presenter?.mapViewShowCenterButton()
     }
     
 }

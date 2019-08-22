@@ -32,6 +32,9 @@
       location = "group:ruta_Circuito_Eulalia_100kph.gpx">
    </FileRef>
    <FileRef
+      location = "group:ruta_Eje_Centra_100kph.gpx">
+   </FileRef>
+   <FileRef
       location = "group:ruta_Thiers_Eje_Central_fast.gpx">
    </FileRef>
    <FileRef

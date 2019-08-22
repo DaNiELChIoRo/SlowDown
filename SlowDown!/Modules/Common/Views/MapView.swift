@@ -19,6 +19,7 @@ class MapView: MKMapView  {
     var cameraLocations = [MKPointAnnotation]()
     var userRegion: MKCoordinateRegion?
     var allRegions : [CLRegion] = [] // Fill all your regions
+    var centerButton: UIButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,7 +124,7 @@ class MapView: MKMapView  {
 extension MapView {
     func monitorUserCurrentRegion(inRegion center: CLLocationCoordinate2D) {
 //        print("creating a new user monitored region")
-        let _region = CLCircularRegion(center: center, radius: 100, identifier: "userLocationRegion")
+        let _region = CLCircularRegion(center: center, radius: 500, identifier: "userLocationRegion")
         _region.notifyOnEntry = false
         _region.notifyOnExit = true
         locationManager?.startMonitoring(for: _region)
@@ -170,7 +171,6 @@ extension MapView {
         }
         
         twentyNearbyRegions.forEach {
-            print("new monetored region ", $0.0)
             locationManager?.startMonitoring(for: $0.0)
         }
     }
@@ -209,13 +209,10 @@ extension MapView: CLLocationManagerDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
         userRegion = region
+//        setRegion(region, animated: false)
         if !isUserRegionMonitored() {
             currentLocation = locations.first
-            createCenterButton()
             monitorUserCurrentRegion(inRegion: location)
-
-        } else {
-            eliminateCenterButton()
         }
         
         func evaluateClosestRegions() {
@@ -237,32 +234,17 @@ extension MapView: CLLocationManagerDelegate {
     @objc func centerButtonHandler(_ region: MKCoordinateRegion, _ sender: UIButton) {
         guard let region = userRegion else { return }
         setRegion(region, animated: false)
-        for _view in subviews {
-            if _view === sender.self {
-                print("destoying the centering button")
-                _view.removeFromSuperview()
-            }
-        }
-    }
-    
-    func didCenterButtonAlreadyExists() -> Bool {
-        for _view in subviews {
-            if _view === UIButton.self {
-                return false
-            }
-        }
-        return true
+        centerButton = nil
     }
     
     func createCenterButton() {
 //        print("creating the centering button")
-        guard didCenterButtonAlreadyExists() else { return }
-        let centerButton = UIButton()
-        centerButton.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
-        centerButton.backgroundColor = .lightGray
-        centerButton.layer.cornerRadius = _width*0.001
-        addSubview(centerButton)
-        centerButton.snp.makeConstraints { (make) in
+        centerButton = UIButton()
+        centerButton?.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
+        centerButton?.backgroundColor = .lightGray
+        centerButton?.layer.cornerRadius = _width*0.08
+        addSubview(centerButton!)
+        centerButton!.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-height*0.1)
             make.trailing.equalToSuperview().offset(-_width*0.03)
             make.height.equalTo(_width*0.1)

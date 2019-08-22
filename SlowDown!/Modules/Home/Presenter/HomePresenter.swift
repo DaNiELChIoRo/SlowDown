@@ -80,4 +80,8 @@ extension HomePresenter: MapViewPresentable {
     func onPermissionDenied() {
         view?.promptLocationUsageRequirement()
     }
+    
+    func mapViewShowCenterButton() {
+        view?.showMapCenterButton()
+    }
 }
