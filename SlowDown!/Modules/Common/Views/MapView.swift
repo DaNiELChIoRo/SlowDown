@@ -222,9 +222,9 @@ extension MapView: CLLocationManagerDelegate {
         
     }
     
-    func eliminateCenterButton() {
+    func eliminateCenterButton(_ sender: NSObject) {
         for _view in subviews {
-            if _view === UIButton.self {
+            if _view === sender.self {
                 print("destoying the centering button")
                 _view.removeFromSuperview()
             }
@@ -235,14 +235,16 @@ extension MapView: CLLocationManagerDelegate {
         guard let region = userRegion else { return }
         setRegion(region, animated: false)
         centerButton = nil
+        eliminateCenterButton(sender)
     }
     
     func createCenterButton() {
 //        print("creating the centering button")
         centerButton = UIButton()
+        centerButton?.setImage(UIImage(named: "location"), for: .normal)
         centerButton?.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
         centerButton?.backgroundColor = .lightGray
-        centerButton?.layer.cornerRadius = _width*0.08
+        centerButton?.layer.cornerRadius = 8
         addSubview(centerButton!)
         centerButton!.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-height*0.1)

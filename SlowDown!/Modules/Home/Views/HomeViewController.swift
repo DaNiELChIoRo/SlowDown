@@ -125,8 +125,8 @@ extension HomeViewController: MKMapViewDelegate {
         presenter?.showDetailView(withLocation: location, withIdentifier: identifier)
     }
     
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-//        mapView
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("MapView will change region!!")
         presenter?.mapViewShowCenterButton()
     }
     

@@ -14,7 +14,7 @@ protocol HomeViewable {
     func showListButton( action: @escaping () -> Void )
     func draw(pins: [Camera])
     func promptLocationUsageRequirement()
-    fun showMapCenterButton()
+    func showMapCenterButton()
 }
 
 protocol HomePresentable {
@@ -23,4 +23,5 @@ protocol HomePresentable {
     func fetchCameras()        
     func showAll()
     func showDetailView(withLocation location:CLLocationCoordinate2D, withIdentifier identifier: String)
+    func mapViewShowCenterButton()
 }
