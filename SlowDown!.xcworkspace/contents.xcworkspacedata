@@ -17,6 +17,9 @@
       location = "group:fotocivicas_ruta2.gpx">
    </FileRef>
    <FileRef
+      location = "group:ruta_Circuito_Eulalia.gpx">
+   </FileRef>
+   <FileRef
       location = "group:fotocivica_Thiers_y_Darwin.gpx">
    </FileRef>
    <FileRef
@@ -24,6 +27,9 @@
    </FileRef>
    <FileRef
       location = "group:../../../../Downloads/default.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:ruta_Circuito_Eulalia_100kph.gpx">
    </FileRef>
    <FileRef
       location = "group:ruta_Thiers_Eje_Central_fast.gpx">

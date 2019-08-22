@@ -18,9 +18,7 @@ class MapView: MKMapView  {
     var locationManager: CLLocationManager?
     var cameraLocations = [MKPointAnnotation]()
     var userRegion: MKCoordinateRegion?
-    var flag:Bool = false
     var allRegions : [CLRegion] = [] // Fill all your regions
-    var userExitRegion: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,8 +96,10 @@ class MapView: MKMapView  {
             region.notifyOnExit = false
             allRegions.append(region)
         }
+        cleanAllMonitoredRegions()
         guard let location = userLocation.location else { return }
-        evaluateClosestLocations(for: location)
+        monitorUserCurrentRegion(inRegion: location.coordinate)
+//        evaluateClosestLocations(for: location)
     }
     
     func setCameraNotification(withRegion region: CLCircularRegion, withId id: String) {
@@ -122,15 +122,32 @@ class MapView: MKMapView  {
 
 extension MapView {
     func monitorUserCurrentRegion(inRegion center: CLLocationCoordinate2D) {
+//        print("creating a new user monitored region")
         let _region = CLCircularRegion(center: center, radius: 100, identifier: "userLocationRegion")
         _region.notifyOnEntry = false
         _region.notifyOnExit = true
         locationManager?.startMonitoring(for: _region)
     }
     
+    func cleanAllMonitoredRegions() {
+//        print("clearin all the monitored Regions!")
+        guard let monitoredRegions = locationManager?.monitoredRegions else { print("no monitored regions!"); return }
+        for _region in monitoredRegions {
+            locationManager?.stopMonitoring(for: _region)
+        }
+    }
+    
+    func isUserRegionMonitored() -> Bool {
+        guard let monitoredRegions = locationManager?.monitoredRegions else { return false }
+        for region in monitoredRegions {
+            if region.identifier == "userLocationRegion" {
+                return true
+            }
+        }
+        return false
+    }
+    
     func evaluateClosestLocations(for location: CLLocation) {
-//        guard userExitRegion else { return }
-//        userExitRegion = false
         print("evaluateClosestRegions")
         var allDistance : [Double] = []
         //Calulate distance of each region's center to currentLocation
@@ -177,8 +194,8 @@ extension MapView: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         guard region.identifier == "userLocationRegion"  else { return }
-        locationManager?.stopMonitoring(for: region)
-        userExitRegion = true
+        print("the user has exit the userLocationRegion!")
+        cleanAllMonitoredRegions()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -189,26 +206,21 @@ extension MapView: CLLocationManagerDelegate {
         }
 
         guard let location = locations.first?.coordinate else { return }
-        currentLocation = locations.first
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
-        if !flag {
-            userRegion = region
-            flag = true
+        userRegion = region
+        if !isUserRegionMonitored() {
+            currentLocation = locations.first
+            createCenterButton()
+            monitorUserCurrentRegion(inRegion: location)
+
         } else {
-            if region.center.latitude != userRegion!.center.latitude && region.center.longitude != userRegion!.center.longitude {
-                userRegion = region
-                createCenterButton()
-            } else {
-                eliminateCenterButton()
-            }
+            eliminateCenterButton()
         }
         
         func evaluateClosestRegions() {
-            guard userExitRegion else { return }
-            userExitRegion = false
-            monitorUserCurrentRegion(inRegion: currentLocation!.coordinate)
-            evaluateClosestLocations(for: currentLocation!)
+//            print("calculating the new camaras for user!!")
+//            evaluateClosestLocations(for: currentLocation!)
         }
         
     }
@@ -233,8 +245,18 @@ extension MapView: CLLocationManagerDelegate {
         }
     }
     
+    func didCenterButtonAlreadyExists() -> Bool {
+        for _view in subviews {
+            if _view === UIButton.self {
+                return false
+            }
+        }
+        return true
+    }
+    
     func createCenterButton() {
 //        print("creating the centering button")
+        guard didCenterButtonAlreadyExists() else { return }
         let centerButton = UIButton()
         centerButton.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
         centerButton.backgroundColor = .lightGray
