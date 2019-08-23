@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, HomeViewable {
         text.text = "Texto de Prueba"
 
         self.mapView = MapView(presenter: presenter as! MapViewPresentable)
-        self.mapView?.delegate = self
+        self.mapView?.delegate = (presenter as! MKMapViewDelegate)
         setupLayout()
         
         self.presenter.fetchCameras()
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, HomeViewable {
                 annotation.subtitle = subtitle
                 annotations.append(annotation)
         }
-        self.mapView?.setCameraLocations(annotations)
+        self.mapView?.setupMapViewForCameraLocations(annotations)
     }
     
     func promptLocationUsageRequirement() {
@@ -96,7 +96,7 @@ class HomeViewController: UIViewController, HomeViewable {
     }
     
     func showMapCenterButton() {
-        mapView?.createCenterButton()
+        mapView?.changeCenterButtonTintColor()
     }
 
 }
@@ -111,23 +111,6 @@ extension HomeViewController {
             make.width.equalTo(view.safeAreaLayoutGuide.snp.width)
             make.bottom.equalToSuperview()
         }
-    }
-    
-}
-
-extension HomeViewController: MKMapViewDelegate {
- 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let identifier = view.annotation?.subtitle!,
-            let address = view.annotation?.title!,
-            let location = view.annotation?.coordinate else { return }
-        print("annotation touched with the address: ", address)
-        presenter?.showDetailView(withLocation: location, withIdentifier: identifier)
-    }
-    
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("MapView will change region!!")
-        presenter?.mapViewShowCenterButton()
     }
     
 }

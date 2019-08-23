@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class HomePresenter: NSObject {
     
@@ -83,5 +84,23 @@ extension HomePresenter: MapViewPresentable {
     
     func mapViewShowCenterButton() {
         view?.showMapCenterButton()
+    }
+}
+
+extension HomePresenter: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let identifier = view.annotation?.subtitle!,
+            let address = view.annotation?.title!,
+            let location = view.annotation?.coordinate else { return }
+        print("annotation touched with the address: ", address)
+        showDetailView(withLocation: location, withIdentifier: identifier)
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if animated {
+            print("MapView will change region!!")
+            mapViewShowCenterButton()
+        }
+        mapViewChangeCenterButtonToActive()
     }
 }

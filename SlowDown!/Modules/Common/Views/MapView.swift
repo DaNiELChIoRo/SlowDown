@@ -59,7 +59,7 @@ class MapView: MKMapView  {
         if let location = location {
             region = MKCoordinateRegion(center: location, span: span)
             userRegion = region
-            setCameraLocation(withLocation: location)            
+            setSingleCameraLocation(withLocation: location)            
         } else {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
         }
@@ -69,7 +69,7 @@ class MapView: MKMapView  {
         showsScale = true
     }
     
-    func setCameraLocation(withLocation location: CLLocationCoordinate2D) {
+    func setSingleCameraLocation(withLocation location: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
         addAnnotation(annotation)
@@ -80,7 +80,6 @@ class MapView: MKMapView  {
         self.locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestLocation()
-//        locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -88,7 +87,7 @@ class MapView: MKMapView  {
         }
     }
     
-    func setCameraLocations(_ locations: [MKPointAnnotation]) {
+    func setupMapViewForCameraLocations(_ locations: [MKPointAnnotation]) {
         cameraLocations = locations
         addAnnotations(locations)
         for location in locations {
@@ -100,27 +99,17 @@ class MapView: MKMapView  {
         cleanAllMonitoredRegions()
         guard let location = userLocation.location else { return }
         monitorUserCurrentRegion(inRegion: location.coordinate)
-//        evaluateClosestLocations(for: location)
+        addCenterButtonToMapView()
     }
     
     func setCameraNotification(withRegion region: CLCircularRegion, withId id: String) {
         let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-//        UserNotificationService.shared.removeNotification(identifier: "userNotification.fotocivica."+location.title!)
         UserNotificationService.shared.defaultNotificationRequest(id: id, title: "SlowDown!", body: "¡Cuidado, te estas aproximando a una fotocivica!", sound: .default, trigger: trigger)
     }
     
-    func setCompassLayout() {
-        let compass = MKCompassButton(mapView: self)
-        compass.compassVisibility = .visible
-        showsCompass = false
-        addSubview(compass)
-        compass.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(_width*0.03)
-            make.trailing.equalToSuperview().offset(-_width*0.03)
-        }
-    }
 }
 
+// MARK:- Camera location calculating processes
 extension MapView {
     func monitorUserCurrentRegion(inRegion center: CLLocationCoordinate2D) {
 //        print("creating a new user monitored region")
@@ -209,7 +198,6 @@ extension MapView: CLLocationManagerDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
         userRegion = region
-//        setRegion(region, animated: false)
         if !isUserRegionMonitored() {
             currentLocation = locations.first
             monitorUserCurrentRegion(inRegion: location)
@@ -222,29 +210,42 @@ extension MapView: CLLocationManagerDelegate {
         
     }
     
-    func eliminateCenterButton(_ sender: NSObject) {
-        for _view in subviews {
-            if _view === sender.self {
-                print("destoying the centering button")
-                _view.removeFromSuperview()
-            }
-        }
-    }
-    
     @objc func centerButtonHandler(_ region: MKCoordinateRegion, _ sender: UIButton) {
         guard let region = userRegion else { return }
         setRegion(region, animated: false)
         centerButton = nil
-        eliminateCenterButton(sender)
     }
     
-    func createCenterButton() {
-//        print("creating the centering button")
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error al intentar obtener la ubicación del usuario!, error message: \(error.localizedDescription)")
+        self.delegate?.mapView?(self, didFailToLocateUserWithError: error)
+    }
+}
+
+// MARK:- Layout Functions
+extension MapView {
+    func setCompassLayout() {
+        let compass = MKCompassButton(mapView: self)
+        compass.compassVisibility = .visible
+        showsCompass = false
+        addSubview(compass)
+        compass.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(_width*0.03)
+            make.trailing.equalToSuperview().offset(-_width*0.03)
+        }
+    }
+    
+    func addCenterButtonToMapView() {
+        //        print("creating the centering button")
         centerButton = UIButton()
-        centerButton?.setImage(UIImage(named: "location"), for: .normal)
+        let locationImage = UIImage(named: "location")?.withRenderingMode(.alwaysTemplate)
+        centerButton?.setImage(locationImage, for: .normal)
         centerButton?.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
-        centerButton?.backgroundColor = .lightGray
+        centerButton?.backgroundColor = .white
+        centerButton?.tintColor = .blue
         centerButton?.layer.cornerRadius = 8
+        centerButton?.layer.borderWidth = 0.5
+        centerButton?.layer.borderColor = UIColor.black.cgColor
         addSubview(centerButton!)
         centerButton!.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-height*0.1)
@@ -254,8 +255,8 @@ extension MapView: CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error al intentar obtener la ubicación del usuario!, error message: \(error.localizedDescription)")
-        self.delegate?.mapView?(self, didFailToLocateUserWithError: error)
+    func changeCenterButtonTintColor() {
+        centerButton?.tintColor = .black
     }
+    
 }

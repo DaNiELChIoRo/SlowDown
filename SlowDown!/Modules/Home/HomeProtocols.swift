@@ -15,6 +15,7 @@ protocol HomeViewable {
     func draw(pins: [Camera])
     func promptLocationUsageRequirement()
     func showMapCenterButton()
+    func mapViewChangeCenterButtonToActive()
 }
 
 protocol HomePresentable {
@@ -24,4 +25,5 @@ protocol HomePresentable {
     func showAll()
     func showDetailView(withLocation location:CLLocationCoordinate2D, withIdentifier identifier: String)
     func mapViewShowCenterButton()
+    func changeCenterButtonToActive()
 }
