@@ -27,7 +27,7 @@ class MainCoordinator: Coordinator {
         presenter.attach(view: homeViewController as HomeViewable)
         navigationController.pushViewController(homeViewController, animated: true)
         navigationController.navigationBar.prefersLargeTitles = true
-    }        
+    }
     
     func showDetailsView(withLocation location:CLLocationCoordinate2D, withCamera camera: Camera) {
         let detailsView = DetailViewController(withLocation: location, andCamera: camera)

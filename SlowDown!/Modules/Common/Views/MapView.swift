@@ -23,8 +23,7 @@ class MapView: MKMapView  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLocationServices()
-        setupView(nil)
+        setupLocationServices(nil)
     }
     
     convenience init(presenter: MapViewPresentable) {
@@ -43,8 +42,7 @@ class MapView: MKMapView  {
     
     init(withLocation location: CLLocationCoordinate2D?) {
         self.init()
-        setupLocationServices()
-        setupView(location)
+        setupLocationServices(location)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,22 +67,32 @@ class MapView: MKMapView  {
         showsScale = true
     }
     
+    func setupLocationServices(_ location: CLLocationCoordinate2D?) {
+        self.locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestLocation()
+        locationManager?.requestAlwaysAuthorization()
+        CLLocationManager.authorizationStatus()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            setupView(location)
+        }
+    }
+    
+    func determineLocationStatus() -> Bool {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            return true
+        default:
+            return false
+        }
+    }
+    
     func setSingleCameraLocation(withLocation location: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
         addAnnotation(annotation)
         setCompassLayout()
-    }
-    
-    func setupLocationServices() {
-        self.locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestLocation()
-        locationManager?.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager?.startUpdatingLocation()
-        }
     }
     
     func setupMapViewForCameraLocations(_ locations: [MKPointAnnotation]) {
@@ -168,8 +176,16 @@ extension MapView {
 extension MapView: CLLocationManagerDelegate {
     //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedAlways {
-            presenter?.onPermissionDenied()
+        switch status {
+            case .authorizedAlways:
+                locationManager?.startUpdatingLocation()
+                showsUserLocation = true
+//                setupLocationServices(nil)
+                break
+            case .notDetermined:
+                break
+            default:
+                presenter?.onPermissionDenied()
         }
     }
     
@@ -185,6 +201,10 @@ extension MapView: CLLocationManagerDelegate {
         guard region.identifier == "userLocationRegion"  else { return }
         print("the user has exit the userLocationRegion!")
         cleanAllMonitoredRegions()
+    }
+    
+    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -212,7 +232,8 @@ extension MapView: CLLocationManagerDelegate {
     
     @objc func centerButtonHandler(_ region: MKCoordinateRegion, _ sender: UIButton) {
         guard let region = userRegion else { return }
-        setRegion(region, animated: false)
+        centerButton?.tintColor = .black
+        setRegion(region, animated: true)
         centerButton = nil
     }
     
@@ -241,22 +262,22 @@ extension MapView {
         let locationImage = UIImage(named: "location")?.withRenderingMode(.alwaysTemplate)
         centerButton?.setImage(locationImage, for: .normal)
         centerButton?.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
-        centerButton?.backgroundColor = .white
-        centerButton?.tintColor = .blue
+        centerButton?.backgroundColor = .white        
         centerButton?.layer.cornerRadius = 8
-        centerButton?.layer.borderWidth = 0.5
+        centerButton?.layer.borderWidth = 0.3
+        centerButton?.tintColor = .black
         centerButton?.layer.borderColor = UIColor.black.cgColor
         addSubview(centerButton!)
         centerButton!.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-height*0.1)
             make.trailing.equalToSuperview().offset(-_width*0.03)
-            make.height.equalTo(_width*0.1)
-            make.width.equalTo(_width*0.1)
+            make.height.equalTo(_width*0.07)
+            make.width.equalTo(_width*0.07)
         }
     }
     
     func changeCenterButtonTintColor() {
-        centerButton?.tintColor = .black
+        centerButton?.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
     }
     
 }

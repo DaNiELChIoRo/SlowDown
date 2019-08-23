@@ -74,7 +74,7 @@ class HomeViewController: UIViewController, HomeViewable {
     }
     
     func promptLocationUsageRequirement() {
-        let alertController = UIAlertController (title: "Title", message: "Go to Settings?", preferredStyle: .alert)
+        let alertController = UIAlertController (title: "Advertencia", message: "Actualmente no cuenta con los servicios de monitoreo activados, los cuales son necesarios para el correcto funcionamiento de la aplicación. Sí desea hacer uso de esta, por favor vaya a las configuraciones y cambie los privilegios a 'Siempre'", preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
             
@@ -96,6 +96,10 @@ class HomeViewController: UIViewController, HomeViewable {
     }
     
     func showMapCenterButton() {
+        mapView?.changeCenterButtonTintColor()
+    }
+    
+    func mapViewChangeCenterButtonToActive() {
         mapView?.changeCenterButtonTintColor()
     }
 

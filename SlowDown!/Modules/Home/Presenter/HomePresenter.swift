@@ -27,6 +27,19 @@ class HomePresenter: NSObject {
         self.coordinator = coordinator        
     }
     
+    func checkUserPermisions() {
+        self.locationManager = CLLocationManager()
+//        locationManager?.delegate = self
+        locationManager?.requestLocation()
+        locationManager?.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager?.startUpdatingLocation()
+        } else {
+            onPermissionDenied()
+        }
+    }
+    
     private func camerasRequest() {
         api.fetchAllCameras(dataSet: "fotocivicas") { (result: Result<[CameraResponse]>) in
             switch result {
@@ -75,6 +88,10 @@ extension HomePresenter: HomePresentable {
         self.view = view
         self.view?.setup(presenter: self as HomePresentable)
     }
+    
+    func changeCenterButtonToActive() {
+        view?.mapViewChangeCenterButtonToActive()
+    }
 }
 
 extension HomePresenter: MapViewPresentable {
@@ -84,6 +101,15 @@ extension HomePresenter: MapViewPresentable {
     
     func mapViewShowCenterButton() {
         view?.showMapCenterButton()
+    }
+}
+
+extension HomePresenter: CLLocationManagerDelegate {
+    //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedAlways {
+            onPermissionDenied()
+        }
     }
 }
 
@@ -97,10 +123,7 @@ extension HomePresenter: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        if animated {
-            print("MapView will change region!!")
-            mapViewShowCenterButton()
-        }
-        mapViewChangeCenterButtonToActive()
+        guard mapView.isUserLocationVisible, !animated else { return }
+        changeCenterButtonToActive()
     }
 }
