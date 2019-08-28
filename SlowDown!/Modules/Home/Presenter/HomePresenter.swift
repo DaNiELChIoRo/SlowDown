@@ -122,8 +122,8 @@ extension HomePresenter: MKMapViewDelegate {
         showDetailView(withLocation: location, withIdentifier: identifier)
     }
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         guard mapView.isUserLocationVisible, !animated else { return }
         changeCenterButtonToActive()
-    }
+    }    
 }
