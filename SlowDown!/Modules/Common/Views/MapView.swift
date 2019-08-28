@@ -21,6 +21,7 @@ class MapView: MKMapView  {
     var allRegions : [CLRegion] = [] // Fill all your regions
     var centerButton: UIButton?
     var automaticCenter:Bool? = false
+    var markLocation: CLLocationCoordinate2D?
     
     let locationImage = UIImage(named: "location")?.withRenderingMode(.alwaysTemplate)
     let navigationIcon = UIImage(named: "navigation")?.withRenderingMode(.alwaysTemplate)
@@ -73,6 +74,7 @@ class MapView: MKMapView  {
     }
     
     func setupLocationServices(_ location: CLLocationCoordinate2D?) {
+        markLocation = location
         self.locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestLocation()
@@ -182,7 +184,7 @@ extension MapView: CLLocationManagerDelegate {
                 locationManager?.startUpdatingLocation()
                 showsUserLocation = true
                 locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                setupView(nil)
+                markLocation != nil ? setupView(markLocation) : setupView(nil)
                 break
             case .notDetermined:
                 break
