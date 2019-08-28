@@ -24,7 +24,6 @@
 		A07A428722F4958B005ED63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428622F4958B005ED63F /* AppDelegate.swift */; };
 		A07A428922F4958B005ED63F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A428822F4958B005ED63F /* ViewController.swift */; };
 		A07A428C22F4958B005ED63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428A22F4958B005ED63F /* Main.storyboard */; };
-		A07A428E22F4958C005ED63F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A07A428D22F4958C005ED63F /* Assets.xcassets */; };
 		A07A429122F4958C005ED63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07A428F22F4958C005ED63F /* LaunchScreen.storyboard */; };
 		A07A429C22F4958C005ED63F /* SlowDown_Tests_Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A429B22F4958C005ED63F /* SlowDown_Tests_Home.swift */; };
 		A07A42A722F4958C005ED63F /* SlowDown_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42A622F4958C005ED63F /* SlowDown_UITests.swift */; };
@@ -42,6 +41,7 @@
 		A07A42DC22F4A5E7005ED63F /* CameraParamsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DB22F4A5E7005ED63F /* CameraParamsRequest.swift */; };
 		A07A42DE22F4A981005ED63F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DD22F4A981005ED63F /* Camera.swift */; };
 		A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */; };
+		A0F92E502316EDC8002A19BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F92E4F2316EDC8002A19BC /* Assets.xcassets */; };
 		BE451612449BB9B6AE532506 /* Pods_SlowDown_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F30ADA04D9A7CD7BD7EEAE2 /* Pods_SlowDown_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +85,6 @@
 		A07A428622F4958B005ED63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07A428822F4958B005ED63F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A07A428B22F4958B005ED63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A07A428D22F4958C005ED63F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A07A429022F4958C005ED63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A07A429222F4958C005ED63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07A429722F4958C005ED63F /* SlowDown!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SlowDown!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +107,7 @@
 		A07A42DB22F4A5E7005ED63F /* CameraParamsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraParamsRequest.swift; sourceTree = "<group>"; };
 		A07A42DD22F4A981005ED63F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasResponse.swift; sourceTree = "<group>"; };
+		A0F92E4F2316EDC8002A19BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFE307EBF893269CD96CBFAE /* Pods-SlowDown!Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FADBC6E056A1A212AC960781 /* Pods-SlowDown!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!/Pods-SlowDown!.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0911B5D6789F1B12CE9729 /* Pods-SlowDown!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!UITests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!UITests/Pods-SlowDown!UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,8 +230,8 @@
 				A07A428622F4958B005ED63F /* AppDelegate.swift */,
 				A07A428822F4958B005ED63F /* ViewController.swift */,
 				A07A428A22F4958B005ED63F /* Main.storyboard */,
-				A07A428D22F4958C005ED63F /* Assets.xcassets */,
 				A07A428F22F4958C005ED63F /* LaunchScreen.storyboard */,
+				A0F92E4F2316EDC8002A19BC /* Assets.xcassets */,
 				A07A429222F4958C005ED63F /* Info.plist */,
 			);
 			path = "SlowDown!";
@@ -533,7 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07A429122F4958C005ED63F /* LaunchScreen.storyboard in Resources */,
-				A07A428E22F4958C005ED63F /* Assets.xcassets in Resources */,
+				A0F92E502316EDC8002A19BC /* Assets.xcassets in Resources */,
 				A07A428C22F4958B005ED63F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,11 @@ class MapView: MKMapView  {
     var userRegion: MKCoordinateRegion?
     var allRegions : [CLRegion] = [] // Fill all your regions
     var centerButton: UIButton?
+    var automaticCenter:Bool? = false
+    
+    let locationImage = UIImage(named: "location")?.withRenderingMode(.alwaysTemplate)
+    let navigationIcon = UIImage(named: "navigation")?.withRenderingMode(.alwaysTemplate)
+    let iosBlue = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,10 +78,6 @@ class MapView: MKMapView  {
         locationManager?.requestLocation()
         locationManager?.requestAlwaysAuthorization()
         CLLocationManager.authorizationStatus()
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            setupView(location)
-        }
     }
     
     func determineLocationStatus() -> Bool {
@@ -180,7 +181,8 @@ extension MapView: CLLocationManagerDelegate {
             case .authorizedAlways:
                 locationManager?.startUpdatingLocation()
                 showsUserLocation = true
-//                setupLocationServices(nil)
+                locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                setupView(nil)
                 break
             case .notDetermined:
                 break
@@ -203,21 +205,18 @@ extension MapView: CLLocationManagerDelegate {
         cleanAllMonitoredRegions()
     }
     
-    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var currentLocation : CLLocation? {
             didSet{
                 evaluateClosestRegions()
             }
         }
-
+        
         guard let location = locations.first?.coordinate else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
         userRegion = region
+        automaticCenter! ? setRegion(region, animated: false) : nil
         if !isUserRegionMonitored() {
             currentLocation = locations.first
             monitorUserCurrentRegion(inRegion: location)
@@ -232,9 +231,17 @@ extension MapView: CLLocationManagerDelegate {
     
     @objc func centerButtonHandler(_ region: MKCoordinateRegion, _ sender: UIButton) {
         guard let region = userRegion else { return }
+        guard !(automaticCenter!) else {
+            print("the map is going to center to the user's position automatically")
+            automaticCenter = false
+            centerButton?.setImage(locationImage, for: .normal)
+            centerButton?.tintColor = iosBlue
+            return
+        }
+        automaticCenter = true
         centerButton?.tintColor = .black
+        centerButton?.setImage(navigationIcon, for: .normal)
         setRegion(region, animated: true)
-        centerButton = nil
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -259,8 +266,7 @@ extension MapView {
     func addCenterButtonToMapView() {
         //        print("creating the centering button")
         centerButton = UIButton()
-        let locationImage = UIImage(named: "location")?.withRenderingMode(.alwaysTemplate)
-        centerButton?.setImage(locationImage, for: .normal)
+        centerButton?.setImage(navigationIcon, for: .normal)
         centerButton?.addTarget(self, action: #selector(centerButtonHandler), for: .touchDown)
         centerButton?.backgroundColor = .white        
         centerButton?.layer.cornerRadius = 8
@@ -277,7 +283,7 @@ extension MapView {
     }
     
     func changeCenterButtonTintColor() {
-        centerButton?.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
+        centerButton?.tintColor = iosBlue
     }
     
 }
