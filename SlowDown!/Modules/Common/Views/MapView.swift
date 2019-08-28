@@ -216,7 +216,7 @@ extension MapView: CLLocationManagerDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008)
         let region = MKCoordinateRegion(center: location, span: span)
         userRegion = region
-        automaticCenter! ? setRegion(region, animated: false) : nil
+        automaticCenter! ? setRegion(region, animated: true) : nil
         if !isUserRegionMonitored() {
             currentLocation = locations.first
             monitorUserCurrentRegion(inRegion: location)
@@ -284,6 +284,7 @@ extension MapView {
     
     func changeCenterButtonTintColor() {
         centerButton?.tintColor = iosBlue
+        automaticCenter = false
     }
     
 }
