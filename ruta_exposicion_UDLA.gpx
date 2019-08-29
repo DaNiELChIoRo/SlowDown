@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="bikehike.co.uk" version="1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+
+<wpt lat="19.422420" lon="-99.168930">
+	<time>2019-08-29T16:59:06Z</time></wpt>
+<wpt lat="19.421290" lon="-99.173860">
+	<time>2019-08-29T16:59:25Z</time></wpt>
+<wpt lat="19.421220" lon="-99.174160">
+	<time>2019-08-29T16:59:26Z</time></wpt>
+<wpt lat="19.422960" lon="-99.175400">
+	<time>2019-08-29T16:59:34Z</time></wpt>
+<wpt lat="19.423660" lon="-99.175880">
+	<time>2019-08-29T16:59:38Z</time></wpt>
+<wpt lat="19.424420" lon="-99.176280">
+	<time>2019-08-29T16:59:41Z</time></wpt>
+<wpt lat="19.425110" lon="-99.176670">
+	<time>2019-08-29T16:59:44Z</time></wpt>
+<wpt lat="19.426450" lon="-99.175810">
+	<time>2019-08-29T16:59:50Z</time></wpt>
+<wpt lat="19.427760" lon="-99.174900">
+	<time>2019-08-29T16:59:57Z</time></wpt>
+<wpt lat="19.427940" lon="-99.174770">
+	<time>2019-08-29T16:59:58Z</time></wpt>
+<wpt lat="19.429640" lon="-99.173690">
+	<time>2019-08-29T17:00:05Z</time></wpt>
+<wpt lat="19.430010" lon="-99.173470">
+	<time>2019-08-29T17:00:07Z</time></wpt>
+<wpt lat="19.430200" lon="-99.173280">
+	<time>2019-08-29T17:00:08Z</time></wpt>
+<wpt lat="19.432080" lon="-99.172090">
+	<time>2019-08-29T17:00:17Z</time></wpt>
+<wpt lat="19.436120" lon="-99.169510">
+	<time>2019-08-29T17:00:36Z</time></wpt>
+<wpt lat="19.435940" lon="-99.169010">
+	<time>2019-08-29T17:00:38Z</time></wpt>
+<wpt lat="19.435480" lon="-99.167690">
+	<time>2019-08-29T17:00:43Z</time></wpt>
+<wpt lat="19.435470" lon="-99.167580">
+	<time>2019-08-29T17:00:44Z</time></wpt>
+<wpt lat="19.433470" lon="-99.162160">
+	<time>2019-08-29T17:01:06Z</time></wpt>
+<wpt lat="19.432430" lon="-99.159330">
+	<time>2019-08-29T17:01:17Z</time></wpt>
+<wpt lat="19.432340" lon="-99.159090">
+	<time>2019-08-29T17:01:18Z</time></wpt>
+<wpt lat="19.429480" lon="-99.160430">
+	<time>2019-08-29T17:01:31Z</time></wpt>
+<wpt lat="19.427920" lon="-99.161150">
+	<time>2019-08-29T17:01:37Z</time></wpt>
+<wpt lat="19.427180" lon="-99.161460">
+	<time>2019-08-29T17:01:41Z</time></wpt>
+<wpt lat="19.426040" lon="-99.161980">
+	<time>2019-08-29T17:01:45Z</time></wpt>
+<wpt lat="19.425070" lon="-99.162440">
+	<time>2019-08-29T17:01:50Z</time></wpt>
+<wpt lat="19.424270" lon="-99.162840">
+	<time>2019-08-29T17:01:53Z</time></wpt>
+<wpt lat="19.424290" lon="-99.163100">
+	<time>2019-08-29T17:01:54Z</time></wpt>
+<wpt lat="19.424270" lon="-99.163230">
+	<time>2019-08-29T17:01:55Z</time></wpt>
+<wpt lat="19.424220" lon="-99.163350">
+	<time>2019-08-29T17:01:55Z</time></wpt>
+<wpt lat="19.424150" lon="-99.163460">
+	<time>2019-08-29T17:01:56Z</time></wpt>
+<wpt lat="19.424060" lon="-99.163560">
+	<time>2019-08-29T17:01:56Z</time></wpt>
+<wpt lat="19.423960" lon="-99.163630">
+	<time>2019-08-29T17:01:57Z</time></wpt>
+<wpt lat="19.423720" lon="-99.163700">
+	<time>2019-08-29T17:01:58Z</time></wpt>
+<wpt lat="19.423600" lon="-99.164220">
+	<time>2019-08-29T17:02:00Z</time></wpt>
+<wpt lat="19.422920" lon="-99.167190">
+	<time>2019-08-29T17:02:11Z</time></wpt>
+<wpt lat="19.422820" lon="-99.167180">
+	<time>2019-08-29T17:02:12Z</time></wpt>
+<wpt lat="19.422480" lon="-99.168670">
+	<time>2019-08-29T17:02:18Z</time></wpt>
+</gpx>

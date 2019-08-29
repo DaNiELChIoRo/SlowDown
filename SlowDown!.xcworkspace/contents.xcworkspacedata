@@ -38,6 +38,9 @@
       location = "group:ruta_Eje_Centra_100kph.gpx">
    </FileRef>
    <FileRef
+      location = "group:ruta_exposicion_UDLA.gpx">
+   </FileRef>
+   <FileRef
       location = "group:ruta_Bahi&#x301;a_Guantanamo_Periferico_100kph.gpx">
    </FileRef>
    <FileRef
