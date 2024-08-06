@@ -68,6 +68,7 @@ class MapView: MKMapView  {
             region = MKCoordinateRegion(center: userCoordinates, span: span)
         }
         showsUserLocation = true
+        showsUserTrackingButton = true
         showsCompass = true
         setRegion(region, animated: true)
         showsScale = true

@@ -14,7 +14,13 @@
       location = "group:../../../../Downloads/IronBit.gpx">
    </FileRef>
    <FileRef
+      location = "group:/Users/dmeneses/Documents/iOS/SlowDown/viaje_amealco_qro.gpx">
+   </FileRef>
+   <FileRef
       location = "group:fotocivicas_ruta2.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/dmeneses/Documents/iOS/SlowDown/viaje_culiacan_Sinaloa.gpx">
    </FileRef>
    <FileRef
       location = "group:ruta_Circuito_Eulalia.gpx">
