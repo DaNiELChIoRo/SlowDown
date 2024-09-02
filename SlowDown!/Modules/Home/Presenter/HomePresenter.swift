@@ -17,7 +17,7 @@ class HomePresenter: NSObject {
     internal var view: HomeViewable?
     private var locationManager: CLLocationManager!
     private var cameras = [Camera]()
-    
+
     let notificationCenter = NotificationCenter.default
     static let listCamerasAllNotification = Notification.Name("listAllCamerasNotification")
     
@@ -57,6 +57,16 @@ class HomePresenter: NSObject {
                 print(error)
             }
         }
+
+        // custom cameras
+        let customCam = Camera(no: 1,
+               recordId: nil,
+               //19.5147563,-99.2524012
+               latitude: "19.5147563", longitude: "-99.2524012",
+               mainStreet: "Cruz de la arboleda",
+               secondStreet: nil, sentido: nil, geoShape: nil)
+
+        cameras.append(customCam)
     }
 }
 

@@ -1,6 +1,0 @@
-framework module Pods_SlowDown_UITests {
-  umbrella header "Pods-SlowDown!UITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

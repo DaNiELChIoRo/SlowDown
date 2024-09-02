@@ -12,15 +12,13 @@ struct Camera{
     var secondStreet: String?
     internal var geoShape: GeoShape?
     
-    init(no: Int?, recordId: String?, latitude: String?, longitude: String?, mainStreet: String?, secondStreet: String?, sentido: String?, geoShape: GeoShape?) {
-        guard let no = no,
-            let recordId = recordId,
-            let latitude = latitude,
-            let sentido = sentido,
-            let longitude = longitude,
-            let mainStreet = mainStreet,
-            let secondStreet = secondStreet else { return }
-        
+    init(no: Int? = nil,
+         recordId: String? = nil,
+         latitude: String?,
+         longitude: String?, mainStreet: String?,
+         secondStreet: String? = nil,
+         sentido: String? = nil, geoShape: GeoShape? = nil) {
+
         self.no = no
         self.sentido = sentido
         self.recordId = recordId

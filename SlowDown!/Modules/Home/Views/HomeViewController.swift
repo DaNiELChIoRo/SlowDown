@@ -20,8 +20,14 @@ class HomeViewController: UIViewController, HomeViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.backgroundColor = .red
     }
-    
+
+    // MARK: Layout Configuration
+    private func setupDropDown() {
+
+    }
+
     //TODO - visual config
     func setup(presenter: HomePresentable) {
 

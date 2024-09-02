@@ -121,7 +121,7 @@ class MapView: MKMapView  {
     
 }
 
-// MARK:- Camera location calculating processes
+// MARK: Camera location calculating processes
 extension MapView {
     func monitorUserCurrentRegion(inRegion center: CLLocationCoordinate2D) {
 //        print("creating a new user monitored region")
@@ -177,6 +177,7 @@ extension MapView {
     }
 }
 
+// MARK: CLLocationManagerDelegate
 extension MapView: CLLocationManagerDelegate {
     //Verificamos la aprovación del monitoreo de la ubicación por parte del usuario
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -253,7 +254,7 @@ extension MapView: CLLocationManagerDelegate {
     }
 }
 
-// MARK:- Layout Functions
+// MARK: Layout Functions
 extension MapView {
     func setCompassLayout() {
         let compass = MKCompassButton(mapView: self)

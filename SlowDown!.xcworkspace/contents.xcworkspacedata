@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Costco_arboledas.gpx">
+   </FileRef>
+   <FileRef
       location = "group:../../../../Downloads/fotocivicas_ruta.gpx">
    </FileRef>
    <FileRef
@@ -18,6 +21,9 @@
    </FileRef>
    <FileRef
       location = "group:fotocivicas_ruta2.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:viaje_Zapopan_centro_Jalisco.gpx">
    </FileRef>
    <FileRef
       location = "group:/Users/dmeneses/Documents/iOS/SlowDown/viaje_culiacan_Sinaloa.gpx">

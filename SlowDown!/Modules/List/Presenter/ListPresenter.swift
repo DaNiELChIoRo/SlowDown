@@ -43,7 +43,14 @@ class ListPresenter: NSObject, ListPresentable {
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         coordinator?.showDetailsView(withLocation: location, withCamera: camera)
     }
-    
+
+    private func emulateLocation(for camera: Camera) {
+        guard let longitude = Double(camera.latitude!),
+            let latitude = Double(camera.longitude!) else { return }
+//        coor
+        
+    }
+
     @objc func didRecieveCameras(_ notification: NSNotification) {
         if let cameras = notification.userInfo?["cameras"] as? [Camera] {
             print(cameras)
@@ -111,7 +118,15 @@ extension ListPresenter: UITableViewDataSource {
 }
 
 extension ListPresenter: UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        debugPrint("highlighted")
+        tableView.deselectRow(at: indexPath, animated: true)
+        let camera = cameras[indexPath.row]
+        // TODO: Emulate
+        emulateLocation(for: camera)
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let camera = cameras[indexPath.row]
