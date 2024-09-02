@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CE6D83F3ABD968469667A68 /* Pods_SlowDown_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DEBBEFACBE3B8CD346675D /* Pods_SlowDown_.framework */; };
-		62462E6A4BD47855C4EA56C9 /* Pods_SlowDown_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7602D8690D7659EB6FDD58 /* Pods_SlowDown_UITests.framework */; };
 		A0297BCD22FCD27C0008C49B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BCC22FCD27C0008C49B /* MapView.swift */; };
 		A0297BD222FCD3EE0008C49B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0297BD122FCD3EE0008C49B /* UIViewController.swift */; };
 		A0694DBA230DB3E2003F1C9B /* MapViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0694DB9230DB3E2003F1C9B /* MapViewProtocols.swift */; };
@@ -42,7 +40,11 @@
 		A07A42DE22F4A981005ED63F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DD22F4A981005ED63F /* Camera.swift */; };
 		A07A42E022F4C32B005ED63F /* CamerasResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */; };
 		A0F92E502316EDC8002A19BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F92E4F2316EDC8002A19BC /* Assets.xcassets */; };
-		B9846A1596BBF319F8AB43DA /* Pods_SlowDown_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D55B81DAF1E2680FCD4788FD /* Pods_SlowDown_Tests.framework */; };
+		E1039DF12C83E88400C73171 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E1039DF02C83E88400C73171 /* Realm */; };
+		E1039DF32C83E88400C73171 /* Realm in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E1039DF02C83E88400C73171 /* Realm */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E1039DF42C83E8BB00C73171 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFAFF52C83E18A00C7300D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E1039DF52C83E8C000C73171 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFAFF32C83E18600C7300D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E1EAF3A92C83E2F500FF2C0D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1EAF3A82C83E2F500FF2C0D /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +64,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E1039DF22C83E88400C73171 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E1039DF52C83E8C000C73171 /* Realm.framework in Embed Frameworks */,
+				E1039DF42C83E8BB00C73171 /* RealmSwift.framework in Embed Frameworks */,
+				E1039DF32C83E88400C73171 /* Realm in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0BD9B6562BFA592093F8C07D /* Pods-SlowDown!UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!UITests.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!UITests/Pods-SlowDown!UITests.release.xcconfig"; sourceTree = "<group>"; };
-		17332A7863A44BA7684553CF /* Pods-SlowDown!UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!UITests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!UITests/Pods-SlowDown!UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7508E7D0B585E2942C5EA2D9 /* Pods-SlowDown!Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D639619C644612CE11FC358 /* Pods-SlowDown!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!/Pods-SlowDown!.release.xcconfig"; sourceTree = "<group>"; };
 		A0297BCC22FCD27C0008C49B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A0297BD122FCD3EE0008C49B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A0694DB9230DB3E2003F1C9B /* MapViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewProtocols.swift; sourceTree = "<group>"; };
@@ -106,11 +120,12 @@
 		A07A42DD22F4A981005ED63F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A07A42DF22F4C32B005ED63F /* CamerasResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerasResponse.swift; sourceTree = "<group>"; };
 		A0F92E4F2316EDC8002A19BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB7602D8690D7659EB6FDD58 /* Pods_SlowDown_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C67CC0C98D369F468621EBFF /* Pods-SlowDown!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!.debug.xcconfig"; path = "Target Support Files/Pods-SlowDown!/Pods-SlowDown!.debug.xcconfig"; sourceTree = "<group>"; };
-		D55B81DAF1E2680FCD4788FD /* Pods_SlowDown_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6DEBBEFACBE3B8CD346675D /* Pods_SlowDown_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlowDown_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4F96E90A31651BB6B81E6B1 /* Pods-SlowDown!Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlowDown!Tests.release.xcconfig"; path = "Target Support Files/Pods-SlowDown!Tests/Pods-SlowDown!Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E1039DF62C83E96C00C73171 /* casa_Immanuel.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = casa_Immanuel.gpx; path = ../../../Desktop/casa_Immanuel.gpx; sourceTree = "<group>"; };
+		E1039DF72C83E9EE00C73171 /* Morelia_MICH.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Morelia_MICH.gpx; path = ../../../Desktop/Morelia_MICH.gpx; sourceTree = "<group>"; };
+		E1039DF82C83EAE200C73171 /* Caracas_Venezuela.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Caracas_Venezuela.gpx; path = ../../../Desktop/Caracas_Venezuela.gpx; sourceTree = "<group>"; };
+		E1039DF92C83EBCB00C73171 /* Madrid_Esp.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Madrid_Esp.gpx; path = ../../../Desktop/Madrid_Esp.gpx; sourceTree = "<group>"; };
+		E1DFAFF32C83E18600C7300D /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1DFAFF52C83E18A00C7300D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +133,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CE6D83F3ABD968469667A68 /* Pods_SlowDown_.framework in Frameworks */,
+				E1039DF12C83E88400C73171 /* Realm in Frameworks */,
+				E1EAF3A92C83E2F500FF2C0D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9846A1596BBF319F8AB43DA /* Pods_SlowDown_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,26 +149,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62462E6A4BD47855C4EA56C9 /* Pods_SlowDown_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15150386C2EA21FEA5CCB67D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C67CC0C98D369F468621EBFF /* Pods-SlowDown!.debug.xcconfig */,
-				8D639619C644612CE11FC358 /* Pods-SlowDown!.release.xcconfig */,
-				7508E7D0B585E2942C5EA2D9 /* Pods-SlowDown!Tests.debug.xcconfig */,
-				F4F96E90A31651BB6B81E6B1 /* Pods-SlowDown!Tests.release.xcconfig */,
-				17332A7863A44BA7684553CF /* Pods-SlowDown!UITests.debug.xcconfig */,
-				0BD9B6562BFA592093F8C07D /* Pods-SlowDown!UITests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		A0297BD022FCD3DB0008C49B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,11 +201,14 @@
 		A07A427A22F4958B005ED63F = {
 			isa = PBXGroup;
 			children = (
+				E1039DF92C83EBCB00C73171 /* Madrid_Esp.gpx */,
+				E1039DF82C83EAE200C73171 /* Caracas_Venezuela.gpx */,
+				E1039DF72C83E9EE00C73171 /* Morelia_MICH.gpx */,
+				E1039DF62C83E96C00C73171 /* casa_Immanuel.gpx */,
 				A07A428522F4958B005ED63F /* SlowDown! */,
 				A07A429A22F4958C005ED63F /* SlowDown!Tests */,
 				A07A42A522F4958C005ED63F /* SlowDown!UITests */,
 				A07A428422F4958B005ED63F /* Products */,
-				15150386C2EA21FEA5CCB67D /* Pods */,
 				DBF174B77A023B5D4E882B6C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -412,9 +416,8 @@
 		DBF174B77A023B5D4E882B6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6DEBBEFACBE3B8CD346675D /* Pods_SlowDown_.framework */,
-				D55B81DAF1E2680FCD4788FD /* Pods_SlowDown_Tests.framework */,
-				BB7602D8690D7659EB6FDD58 /* Pods_SlowDown_UITests.framework */,
+				E1DFAFF52C83E18A00C7300D /* RealmSwift.framework */,
+				E1DFAFF32C83E18600C7300D /* Realm.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,17 +429,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42AB22F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!" */;
 			buildPhases = (
-				292AE4CAF57B94603B1DD99C /* [CP] Check Pods Manifest.lock */,
 				A07A427F22F4958B005ED63F /* Sources */,
 				A07A428022F4958B005ED63F /* Frameworks */,
 				A07A428122F4958B005ED63F /* Resources */,
-				9AEC7AD0C149863EC64C0806 /* [CP] Embed Pods Frameworks */,
+				E1039DF22C83E88400C73171 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "SlowDown!";
+			packageProductDependencies = (
+				E1EAF3A82C83E2F500FF2C0D /* SnapKit */,
+				E1039DF02C83E88400C73171 /* Realm */,
+			);
 			productName = "SlowDown!";
 			productReference = A07A428322F4958B005ED63F /* SlowDown!.app */;
 			productType = "com.apple.product-type.application";
@@ -445,7 +451,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42AE22F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!Tests" */;
 			buildPhases = (
-				BD90C8E88382BBE01047E89E /* [CP] Check Pods Manifest.lock */,
 				A07A429322F4958C005ED63F /* Sources */,
 				A07A429422F4958C005ED63F /* Frameworks */,
 				A07A429522F4958C005ED63F /* Resources */,
@@ -464,7 +469,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A07A42B122F4958C005ED63F /* Build configuration list for PBXNativeTarget "SlowDown!UITests" */;
 			buildPhases = (
-				2143DA0C1589429A14D36A6D /* [CP] Check Pods Manifest.lock */,
 				A07A429E22F4958C005ED63F /* Sources */,
 				A07A429F22F4958C005ED63F /* Frameworks */,
 				A07A42A022F4958C005ED63F /* Resources */,
@@ -516,6 +520,10 @@
 				Base,
 			);
 			mainGroup = A07A427A22F4958B005ED63F;
+			packageReferences = (
+				E1EAF3A72C83E2F500FF2C0D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E1EAF3AC2C83E39E00FF2C0D /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = A07A428422F4958B005ED63F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -553,92 +561,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2143DA0C1589429A14D36A6D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SlowDown!UITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		292AE4CAF57B94603B1DD99C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SlowDown!-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AEC7AD0C149863EC64C0806 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SlowDown!/Pods-SlowDown!-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD90C8E88382BBE01047E89E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SlowDown!Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A07A427F22F4958B005ED63F /* Sources */ = {
@@ -845,13 +767,12 @@
 		};
 		A07A42AC22F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C67CC0C98D369F468621EBFF /* Pods-SlowDown!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPUTZQX636;
 				INFOPLIST_FILE = "SlowDown!/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -866,13 +787,12 @@
 		};
 		A07A42AD22F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D639619C644612CE11FC358 /* Pods-SlowDown!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPUTZQX636;
 				INFOPLIST_FILE = "SlowDown!/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -887,7 +807,6 @@
 		};
 		A07A42AF22F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7508E7D0B585E2942C5EA2D9 /* Pods-SlowDown!Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -908,7 +827,6 @@
 		};
 		A07A42B022F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4F96E90A31651BB6B81E6B1 /* Pods-SlowDown!Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -929,7 +847,6 @@
 		};
 		A07A42B222F4958C005ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17332A7863A44BA7684553CF /* Pods-SlowDown!UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -949,7 +866,6 @@
 		};
 		A07A42B322F4958C005ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BD9B6562BFA592093F8C07D /* Pods-SlowDown!UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1007,6 +923,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1EAF3A72C83E2F500FF2C0D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		E1EAF3AC2C83E39E00FF2C0D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1039DF02C83E88400C73171 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EAF3AC2C83E39E00FF2C0D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		E1EAF3A82C83E2F500FF2C0D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1EAF3A72C83E2F500FF2C0D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A07A427B22F4958B005ED63F /* Project object */;
 }
